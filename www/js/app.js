@@ -59,6 +59,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
       }
     })
+    .state('tab.assinar', {
+        url: '/assinar',
+        views: {
+          'tab-assinar': {
+            templateUrl: 'templates/tab-assinar.html',
+            controller: 'ChatsCtrl'
+          }
+        }
+      })
+
     .state('tab.chat-detail', {
       url: '/chats/:chatId',
       views: {
