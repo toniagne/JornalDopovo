@@ -1,11 +1,29 @@
 <ion-modal-view>
   <ion-header-bar>
-    <h1 class="title">Faça o login abaixo</h1>
+    <h1 class="title">CONTEÚDO EXCLUSIVO</h1>
     <div class="buttons">
-      <button class="button button-clear" ng-click="closeLogin()">Fechar</button>
+      <a class="icon ion-close-circled" ng-click="closeLogin()"></a>
     </div>
   </ion-header-bar>
   <ion-content>
+
+    <div id='bg' style="background: url('img/fundoassinante.png') no-repeat center center;width:100%; height:398px;float:left;">
+        <p id="texto" style="text-align:center;margin:20px;font-size:36px;color:#402007;font-family:Georgia;line-height: 0.8;letter-spacing: -0.5px;margin:40px 0 30px 0;">Você está tentando acessar<br />
+            <span>CONTEÚDO EXCLUSIVO</span><br />
+            para nossos assinantes
+        </p>
+        <a href="http://www.jornaldopovo.com.br/site/formulario_assinante.php" title="Sou Assinante" style="background:url('img/bg_bt.png') no-repeat center center;
+           width:255px; display:block;float:right;font-size:24px; font-family:Georgia; text-align:center;
+           color:#22190c;text-decoration:none;padding:15px 0 15px 0;">Sou assinante</a>
+        <div style="background:url('img/mao_esquerda.png') no-repeat left top; width:84px; height:64px; display:block;float:right;margin:9px 0 0 0;"></div>
+        <br style="clear:both;">
+        <a href="http://www.jornaldopovo.com.br/site/assinar.php" title="Quero ser assinantee" style="background:url('img/bg_bt.png') no-repeat center center;
+           width:255px; display:block;float:left;font-size:24px; text-align:center; font-family:Georgia;
+           color:#22190c;text-decoration:none;padding:15px 0 15px 0;">Quero ser assinante</a>
+        <div style="background:url('img/mao_direita.png') no-repeat right top; width:84px; height:64px; display:block;float:left;margin: 9px 0 0 -18px;"></div>
+    </div>
+
+
     <form ng-submit="doLogin()">
       <div class="list">
         <label class="item item-input">
