@@ -12,23 +12,11 @@
       </div>
 
     </div>
-    <ion-slide-box>
-      <ion-slide>
-        <img src="img/edicoes/4384.jpg" width="100%" ng-click="abreEdicao();">
-      </ion-slide>
-      <ion-slide>
-        <img src="img/edicoes/4385.jpg" width="100%">
-      </ion-slide>
-      <ion-slide>
-        <img src="img/edicoes/4386.jpg" width="100%">
-      </ion-slide>
-      <ion-slide>
-        <img src="img/edicoes/4387.jpg" width="100%">
-      </ion-slide>
-      <ion-slide>
-        <img src="img/edicoes/4388.jpg" width="100%">
-      </ion-slide>
-    </ion-slide-box>
+
+
+        <img ng-repeat="itens in edicoes" src="http://www.jornaldopovo.com.br/site/upload/capa/{{itens}}.jpg" width="100%" ng-click="abreEdicao({{itens}});"><Br>
+
+
 
 
   </ion-content>

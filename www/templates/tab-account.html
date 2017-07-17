@@ -1,9 +1,10 @@
 <ion-view view-title="Account">
   <ion-content>
-    <ion-list>
-    <ion-toggle  ng-model="settings.enableFriends">
-        Enable Friends
-    </ion-toggle>
-    </ion-list>
+    <pdf-viewer
+   delegate-handle="my-pdf-container"
+   url="pdfUrl"
+   scale="1"
+   show-toolbar="true"
+   headers="{ 'x-you-know-whats-awesome': 'EVERYTHING' }"></pdf-viewer>
   </ion-content>
 </ion-view>

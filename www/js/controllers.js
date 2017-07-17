@@ -1,4 +1,4 @@
-angular.module('starter.controllers', ['ngSanitize', 'ngMask'])
+angular.module('starter.controllers', ['ngSanitize', 'ngMask', 'ngPDFViewer'])
 
 .controller('JornalApp', function($scope, $sce, $ionicLoading, $timeout) {
 
@@ -9,14 +9,12 @@ angular.module('starter.controllers', ['ngSanitize', 'ngMask'])
     maxWidth: 200,
     showDelay: 0
   });
-
   $scope.trustSrc = function(src) {
     $timeout(function () {
     $ionicLoading.hide();
   }, 2000);
       return $sce.trustAsResourceUrl(src);
     }
-
   $scope.iframeURL = "http://www.jornaldopovo.com.br/mobile/site/index.php";
 
 
@@ -24,9 +22,20 @@ angular.module('starter.controllers', ['ngSanitize', 'ngMask'])
 
 .controller('DashCtrl', function($scope) {})
 
-.controller('ChatsCtrl', function($scope, $ionicModal, $timeout, $location) {
+.controller('ChatsCtrl', function($scope, $ionicModal, $timeout, $location, $http, PDFViewerService, $sce) {
 
- $scope.abreEdicao = function(){
+  var url =  'http://www.jornaldopovo.com.br/jpApp/edicoes.php?callback=JSON_CALLBACK';
+   $http.jsonp(url).
+   success(function(data, status, headers, config) {
+      $scope.edicoes = data;
+      console.log(data);
+   }).
+   error(function(data, status, headers, config) {
+     console.log('erro');
+   });
+
+ $scope.abreEdicao = function(coditem){
+   console.log(coditem);
    $scope.modal.show();
  };
 
@@ -45,20 +54,44 @@ angular.module('starter.controllers', ['ngSanitize', 'ngMask'])
  };
 
  // Open the login modal
- $scope.login = function() {
+ $scope.login = function(coditem) {
    $scope.modal.show();
+   console.log(coditem);
  };
 
  // Perform the login action when the user submits the login form
  $scope.doLogin = function() {
    $scope.closeLogin();
 
-   $location.path("/edicao-selecionada");
+   $location.path("/tab/edicao-selecionada");
 
 
  };
 
+ $scope.pdfURL = "img/test.pdf";
 
+ 	//$scope.instance = pdf.Instance("viewer");
+
+ 	$scope.nextPage = function() {
+ 		$scope.instance.nextPage();
+ 	};
+
+ 	$scope.prevPage = function() {
+ 		$scope.instance.prevPage();
+ 	};
+
+ 	$scope.gotoPage = function(page) {
+ 		$scope.instance.gotoPage(page);
+ 	};
+
+ 	$scope.pageLoaded = function(curPage, totalPages) {
+ 		$scope.currentPage = curPage;
+ 		$scope.totalPages = totalPages;
+ 	};
+
+ 	$scope.loadProgress = function(loaded, total, state) {
+ 		console.log('loaded =', loaded, 'total =', total, 'state =', state);
+ };
 })
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {

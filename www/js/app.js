@@ -59,6 +59,18 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
       }
     })
+
+    .state('tab.chats-edicao-selecionada', {
+        url: '/edicao-selecionada',
+        views: {
+          'tab-chats': {
+            templateUrl: 'templates/edicao-selecionada.html',
+            controller: 'ChatsCtrl'
+          }
+        }
+      })
+
+
     .state('tab.assinar', {
         url: '/assinar',
         views: {
