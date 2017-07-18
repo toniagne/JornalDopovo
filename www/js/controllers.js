@@ -22,6 +22,14 @@ angular.module('starter.controllers', ['ngSanitize', 'ngMask', 'ngPDFViewer'])
 
 .controller('DashCtrl', function($scope) {})
 
+.controller('LoginCtrl', function($scope) {
+  
+  $scope.irPg = function(coditem){
+    console.log(coditem);
+  };
+
+})
+
 .controller('ChatsCtrl', function($scope, $ionicModal, $timeout, $location, $http, PDFViewerService, $sce) {
 
   var url =  'http://www.jornaldopovo.com.br/jpApp/edicoes.php?callback=JSON_CALLBACK';
@@ -39,11 +47,18 @@ angular.module('starter.controllers', ['ngSanitize', 'ngMask', 'ngPDFViewer'])
    $scope.modal.show();
  };
 
+ $scope.irPg = function(coditem){
+   console.log(coditem);
+   $scope.modal.hide();
+ };
+
+
  $scope.loginData = {};
 
  // Create the login modal that we will use later
  $ionicModal.fromTemplateUrl('templates/login.html', {
-   scope: $scope
+   scope: $scope,
+   controller: 'ChatsCtrl',
  }).then(function(modal) {
    $scope.modal = modal;
  });
