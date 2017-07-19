@@ -1,47 +1,13 @@
-<ion-view view-title="">
-  <ion-nav-bar class="bar-custom">
-  </ion-nav-bar>
-  <ion-content>
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">ASSINATURAS</h1>
+    <div class="buttons">
+      <a class="icon ion-close-circled" ng-click="closeAssinaturas()"></a>
+    </div>
+  </ion-header-bar>
+  <ion-content  scroll="true" overflow-scroll="true" class="iframe-wrapper">
 
-    <div class="card">
-  <div class="item item-text-wrap">
-    Preencha os campos abaixo para se cadastrar e ter acesso ao conteúdo do Jornal do Povo.
-  </div>
-</div>
+<iframe data-tap-disabled="true" ng-src="{{trustSrc(iframeURLassinatura)}}"></iframe>
 
-
-<div class="list">
-<label class="item item-input item-stacked-label">
-<span class="input-label">E-mail</span>
-<input type="email" placeholder="E-mail">
-</label>
-<label class="item item-input item-stacked-label">
-<span class="input-label">Senha</span>
-<input type="text" placeholder="Senha">
-</label>
-<label class="item item-input item-stacked-label">
-<span class="input-label">Nome</span>
-<input type="text" placeholder="Nome">
-</label>
-<label class="item item-input item-stacked-label">
-<span class="input-label">Sobrenome</span>
-<input type="text" placeholder="Sobrenome">
-</label>
-<label class="item item-input item-stacked-label">
-<span class="input-label">Data de Nascimento</span>
-<input type="text" placeholder="Data de Nascimento" ng-model="date" mask='31/12/9999'>
-</label>
-<label class="item item-input item-stacked-label">
-<span class="input-label">CPF</span>
-<input type="text" placeholder="CPF" ng-model="cpf1" mask='999.999.999-99'>
-</label>
-<label class="item item-input item-stacked-label">
-<span class="input-label">Telefone</span>
-<input type="text" placeholder="Telefone" mask="(99) 9?9999-9999" ng-model="phone2">
-</label>
-<button class="button button-full button-positive">
- CADASTRAR-SE
-</button>
-</div>
   </ion-content>
 </ion-view>

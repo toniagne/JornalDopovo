@@ -1,7 +1,13 @@
 <ion-view view-title="">
-  <ion-nav-bar class="bar-custom">
-  </ion-nav-bar>
   <ion-content scroll="true" overflow-scroll="true" class="iframe-wrapper">
+
+      <ion-floating-menu menu-color="#ED3237" menu-open-color="#ED3237">
+        <ion-floating-item button-color="#ED3237"  click="versaoImpressa()" icon="ion-camera" text="Versão Impressa"></ion-floating-item>
+        <ion-floating-item button-color="#ED3237" click="assinaturas()" icon="ion-person" text="Assinaturas" ng-href="#/tab/assinar"></ion-floating-item>
+        <ion-floating-item button-color="#0977A3" click="carregaInicio()" icon-image-class="imageClass" icon-image-path="img/logo-jp.png" text="Jornal do Povo"></ion-floating-item>
+      </ion-floating-menu>
+
      <iframe data-tap-disabled="true" ng-src="{{trustSrc(iframeURL)}}"></iframe>
+
   </ion-content>
 </ion-view>
