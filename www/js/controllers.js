@@ -74,7 +74,7 @@ $scope.nedicoes = res[4];
 var dataed =res[1]+res[2]+res[3];
 
 $scope.relativity = "http://www.jornaldopovo.com.br/flip/edicoes/"+dataed+"/edicao_completa.pdf";
-$scope.material = "../img/edicao_completa.pdf";
+$scope.material = "http://www.jornaldopovo.com.br/flip/edicoes/"+dataed+"/edicao_completa.pdf";
   $scope.pdfUrl = $scope.material;
 var edicoespgs = new Array();
 for (i = 1; i < res[4]; i++) {
