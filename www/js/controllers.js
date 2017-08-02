@@ -1,4 +1,4 @@
-angular.module('starter.controllers', ['ion-floating-menu'])
+angular.module('starter.controllers', ['ion-floating-menu', 'pdf'])
 
 .controller('DashCtrl', function($scope, $sce, $timeout, $ionicLoading) {
   $ionicLoading.show({
@@ -51,7 +51,13 @@ angular.module('starter.controllers', ['ion-floating-menu'])
    });
 })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats, $sce) {
+.controller('ChatDetailCtrl', function($scope, $stateParams, Chats, $sce, pdfDelegate) {
+
+
+
+
+
+
   $scope.versaoImpressa = function (){
       window.location.href = '#/tab/chats';
   }
@@ -67,6 +73,9 @@ $scope.dataedicao = res[1]+res[2]+res[3];
 $scope.nedicoes = res[4];
 var dataed =res[1]+res[2]+res[3];
 
+$scope.relativity = "http://www.jornaldopovo.com.br/flip/edicoes/"+dataed+"/edicao_completa.pdf";
+$scope.material = "../img/edicao_completa.pdf";
+  $scope.pdfUrl = $scope.material;
 var edicoespgs = new Array();
 for (i = 1; i < res[4]; i++) {
       edicoespgs[i] = "http://www.jornaldopovo.com.br/flip/edicoes/"+dataed+"/pages/"+i+"_zoom.swf";
@@ -91,7 +100,7 @@ $scope.trustSrc = function(src) {
   $scope.settings = {
     enableFriends: true
   };
-  $scope.trustSrc = function(src) { 
+  $scope.trustSrc = function(src) {
       return $sce.trustAsResourceUrl(src);
   }
   $scope.iframeURLassinatura = "http://www.jornaldopovo.com.br/site/assinar.php";
