@@ -1,0 +1,31 @@
+<ion-view view-title="">
+  <ion-floating-menu menu-color="#ED3237" menu-open-color="#ED3237">
+    <ion-floating-item button-color="#ED3237" click="versaoImpressa()" icon="ion-camera" text="Versão Impressa"></ion-floating-item>
+    <ion-floating-item button-color="#ED3237" click="assinaturas()" icon="ion-person" text="Assinaturas" ng-href="#/tab/assinar"></ion-floating-item>
+    <ion-floating-item button-color="#0977A3" click="carregaInicio()" icon-image-class="imageClass" icon-image-path="img/logo-jp.png" text="Jornal do Povo"></ion-floating-item>
+  </ion-floating-menu>
+  <ion-content>
+    <div class="list">
+      <div class="item item-input-inset">
+        <label class="item item-input-wrapper">
+          <input type="text" ng-model='maskModel' mask='99/99/9999' placeholder="Digite a data">
+        </label>
+        <a class="button button-icon icon ion-search"></a>
+      </div>
+
+    </div>
+
+    <div class="list card">
+          <div class="item item-image" ng-repeat="itens in edicoes">
+            <br>
+            <a href="#/tab/chats/{{itens.edicao}}-{{itens.data}}-{{itens.np}}">
+              <img  src="http://www.jornaldopovo.com.br/site/upload/capa/{{itens.edicao}}.jpg" width="100%" >
+            </a>
+            <Br>
+            <br>
+          </div>
+    </div>
+
+
+  </ion-content>
+</ion-view>
