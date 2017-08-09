@@ -51,9 +51,11 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf'])
    });
 
    $scope.openPDF = function(filename) {
-
-
-   uri = "http://www.jornaldopovo.com.br/flip/edicoes/"+filename+"/edicao_completa.pdf";
+ console.log(filename);
+   newfilename = 'file.pdf'
+   var res = filename.split("-");
+   var data = res[0]+res[1]+res[2];
+   uri = "http://www.jornaldopovo.com.br/flip/edicoes/"+data+"/edicao_completa.pdf";
    window.resolveLocalFileSystemURL(cordova.file.applicationDirectory + uri, function(fileEntry) {
 
      window.resolveLocalFileSystemURL(cordova.file.externalDataDirectory, function(dirEntry) {
