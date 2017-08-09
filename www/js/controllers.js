@@ -56,16 +56,7 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf'])
    var res = filename.split("-");
    var data = res[0]+res[1]+res[2];
    uri = "http://www.jornaldopovo.com.br/flip/edicoes/"+data+"/edicao_completa.pdf";
-   window.resolveLocalFileSystemURL(cordova.file.applicationDirectory + uri, function(fileEntry) {
-
-     window.resolveLocalFileSystemURL(cordova.file.externalDataDirectory, function(dirEntry) {
-
-       fileEntry.copyTo(dirEntry, newfilename, function(newFileEntry) {
-
-         window.open(newFileEntry.nativeURL, '_system', 'location=yes');
-       });
-     });
-   });
+   window.open(uri, '_system', 'location=yes');
 
  }
 
