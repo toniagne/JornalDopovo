@@ -18,7 +18,7 @@
     <div class="list card">
           <div class="item item-image" ng-repeat="itens in edicoes">
             <br>
-            <a href="#/tab/chats/{{itens.edicao}}-{{itens.data}}-{{itens.np}}">
+            <a ng-click="openPDF(itens.data)">
               <img  src="http://www.jornaldopovo.com.br/site/upload/capa/{{itens.edicao}}.jpg" width="100%" >
             </a>
             <Br>

@@ -49,6 +49,24 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf'])
    error(function(data, status, headers, config) {
      console.log('erro');
    });
+
+   $scope.openPDF = function(filename) {
+
+
+   uri = "http://www.jornaldopovo.com.br/flip/edicoes/"+filename+"/edicao_completa.pdf";
+   window.resolveLocalFileSystemURL(cordova.file.applicationDirectory + uri, function(fileEntry) {
+
+     window.resolveLocalFileSystemURL(cordova.file.externalDataDirectory, function(dirEntry) {
+
+       fileEntry.copyTo(dirEntry, newfilename, function(newFileEntry) {
+
+         window.open(newFileEntry.nativeURL, '_system', 'location=yes');
+       });
+     });
+   });
+
+ }
+
 })
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats, $sce, pdfDelegate) {
