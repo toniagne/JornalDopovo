@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.joranldopovo.toni" version="1.0.9" versionCode="109" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.joranldopovo.toni" version="1.0.10" versionCode="1010" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Jornal do Povo</name>
     <description>
         Formando Opiniões
@@ -12,7 +12,8 @@
     <preference name="android-minSdkVersion" value="14" />
     <preference name="show-splash-screen-spinner" value="true" />
     <preference name="auto-hide-splash-screen" value="true" />
-
+    <preference name="SplashScreen" value="splash" />
+    <preference name="SplashScreenDelay" value="4000" />
     <plugin name="cordova-plugin-battery-status" source="npm" spec="~1.1.1" />
     <plugin name="cordova-plugin-camera" source="npm" spec="~2.1.1" />
     <plugin name="cordova-plugin-media-capture" source="npm" spec="~1.2.0" />
@@ -38,8 +39,8 @@
      <param name="android-package" value="nl.xservices.plugins.SocialSharing" />
     </feature>
 
-   <plugin name="phonegap-plugin-push" source="npm" spec="~1.8.0">
-        <variable name="SENDER_ID" value="AAAAbhBN6kw:APA91bFuR-uvio_o2tAarSh66c9Epci8c9Kw4j769P0Q20Bs9q0dxiPUe-Wt4Zsq8qCXD1uWkVp48uUsLObRWpJ0tEwKAgReaSzhWzk5u1Aw2nE6PiC8Ky10J1YFVebdrk3zt2dcIkH8rOUDKPkOC0IcVlHUgWRSOQ" />
+   <plugin name="phonegap-plugin-push" source="npm" spec="~1.10.0">
+        <variable name="SENDER_ID" value="AAAAXthqTyQ:APA91bFx7022rS40rzMaugYHx8BpXaKCIWNfhFEPtdg8tvUOVZTCUo9fVEjPmSaDYg-yWXmWorvKKG5FJBYHfUUiNnPStJbBS0q6L0kuJX4w_XXloLtwYuE4fd5sGmJdNKYu6jSPyIwM" />
     </plugin>
 
     <icon src="icon.png" />
