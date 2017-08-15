@@ -1,4 +1,4 @@
-angular.module('starter.controllers', ['ion-floating-menu', 'pdf'])
+angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'ngCookies'])
 
 .controller('DashCtrl', function($scope, $sce, $timeout, $ionicLoading) {
   $ionicLoading.show({
@@ -41,6 +41,7 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf'])
   }
 
   var url =  'http://www.jornaldopovo.com.br/jpApp/edicoes.php?callback=JSON_CALLBACK';
+
    $http.jsonp(url).
    success(function(data, status, headers, config) {
       $scope.edicoes = data;
@@ -52,100 +53,18 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf'])
 
    $scope.openPDF = function(filename) {
 
-     var app = {
-       // Application Constructor
-       initialize: function() {
-           this.bindEvents();
-       },
-       // Bind Event Listeners
-       //
-       // Bind any events that are required on startup. Common events are:
-       // 'load', 'deviceready', 'offline', and 'online'.
-       bindEvents: function() {
-           document.addEventListener('deviceready', this.onDeviceReady, false);
-       },
-       // deviceready Event Handler
-       //
-       // The scope of 'this' is the event. In order to call the 'receivedEvent'
-       // function, we must explicitly call 'app.receivedEvent(...);'
-       onDeviceReady: function() {
-           console.log('Received Device Ready Event');
-           console.log('calling setup push');
-           app.setupPush();
-       },
-       setupPush: function() {
-           console.log('calling push init');
-           var push = PushNotification.init({
-               "android": {
-                   "senderID": "610980912121"
-               },
-               "browser": {},
-               "ios": {
-                   "sound": true,
-                   "vibration": true,
-                   "badge": true
-               },
-               "windows": {}
-           });
-           console.log('after init');
-
-           push.on('registration', function(data) {
-               console.log('registration event: ' + data.registrationId);
-
-               var oldRegId = localStorage.getItem('registrationId');
-               if (oldRegId !== data.registrationId) {
-                   // Save new registration ID
-                   localStorage.setItem('registrationId', data.registrationId);
-                   // Post registrationId to your app server as the value has changed
-               }
 
 
-
-
-                           var script = document.createElement('script');
-    // script.src = 'http://www.jornaldopovo.com.br/guiafoneApp/cadid.php?idApp='+data.registrationId;
-      // document.getElementsByTagName('head')[0].appendChild(script);
-
-
-           });
-
-           push.on('error', function(e) {
-               console.log("push error = " + e.message);
-           });
-
-           push.on('notification', function(data) {
-               console.log('notification event');
-               navigator.notification.alert(
-                   data.message,         // message
-                   null,                 // callback
-                   data.title,           // title
-                   'Ok'                  // buttonName
-               );
-          });
-       }
-     };
-
-     app.initialize();
-
-
- console.log(filename);
-   newfilename = 'file.pdf'
    var res = filename.split("-");
    var data = res[0]+res[1]+res[2];
    uri = "http://www.jornaldopovo.com.br/flip/edicoes/"+data+"/edicao_completa.pdf";
-
-   console.log(app);
-   //window.open(uri, '_system', 'location=yes');
+   window.open(uri, '_system', 'location=yes');
 
  }
 
 })
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats, $sce, pdfDelegate) {
-
-
-
-
 
 
   $scope.versaoImpressa = function (){
