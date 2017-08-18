@@ -110,12 +110,18 @@ document.getElementsByTagName('head')[0].appendChild(script);
                 data.title,           // title
                 'Ok'                  // buttonName
             );
+
+            if(data.additionalData.coldstart){
+                      if(data.title=="News!"){
+                       window.location.replace("#/tab/noticia/1"); }
+                             }
        });
     }
   };
 
   app.initialize();
 
+  
   </script>
   </head>
   <body ng-app="starter">

@@ -1,6 +1,6 @@
 angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'ngCookies'])
 
-.controller('DashCtrl', function($scope, $sce, $timeout, $ionicLoading) {
+.controller('DashCtrl', function($scope, $sce, $timeout, $ionicLoading, $state) {
   $ionicLoading.show({
     content: 'Loading',
     animation: 'fade-in',
@@ -13,7 +13,7 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'ngCookies'])
         window.location.href = '#/tab/chats';
     }
     $scope.carregaInicio = function (){
-        window.location.href = '#/tab/dash';
+        $state.go("tab.dash"); 
     }
     $scope.assinaturas = function (){
         window.location.href = '#/tab/account';
@@ -64,14 +64,14 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'ngCookies'])
 
 })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats, $sce, pdfDelegate) {
+.controller('ChatDetailCtrl', function($scope, $stateParams, Chats, $sce, pdfDelegate, $state) {
 
 
   $scope.versaoImpressa = function (){
       window.location.href = '#/tab/chats';
   }
   $scope.carregaInicio = function (){
-      window.location.href = '#/tab/dash';
+      $state.go("tab.dash"); 
   }
   $scope.assinaturas = function (){
       window.location.href = '#/tab/account';
@@ -113,4 +113,26 @@ $scope.trustSrc = function(src) {
       return $sce.trustAsResourceUrl(src);
   }
   $scope.iframeURLassinatura = "http://www.jornaldopovo.com.br/site/assinar.php";
-});
+})
+
+.controller('NoticiaCtrl', function($scope, $sce, $stateParams, $state) {
+
+  console.log($stateParams.chatId);
+  $scope.versaoImpressa = function (){
+      window.location.href = '#/tab/chats';
+  }
+  $scope.carregaInicio = function (){
+    $state.go("tab.dash"); 
+  }
+  $scope.assinaturas = function (){
+      window.location.href = '#/tab/account';
+  }
+  $scope.settings = {
+    enableFriends: true
+  };
+  $scope.trustSrc = function(src) {
+      return $sce.trustAsResourceUrl(src);
+  }
+  $scope.iframeURLassinatura = "http://www.jornaldopovo.com.br/site/assinar.php";
+})
+;
