@@ -112,9 +112,9 @@ document.getElementsByTagName('head')[0].appendChild(script);
             );
 
             if(data.additionalData.coldstart){
-                      if(data.title=="News!"){
-                       window.location.replace("#/tab/noticia/1"); }
-                             }
+                       
+                       window.location.replace("#/tab/noticia/"+data.idnoticia); }
+                             
        });
     }
   };

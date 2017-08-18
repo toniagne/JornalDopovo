@@ -116,8 +116,7 @@ $scope.trustSrc = function(src) {
 })
 
 .controller('NoticiaCtrl', function($scope, $sce, $stateParams, $state) {
-
-  console.log($stateParams.chatId);
+ 
   $scope.versaoImpressa = function (){
       window.location.href = '#/tab/chats';
   }
@@ -133,6 +132,6 @@ $scope.trustSrc = function(src) {
   $scope.trustSrc = function(src) {
       return $sce.trustAsResourceUrl(src);
   }
-  $scope.iframeURLassinatura = "http://www.jornaldopovo.com.br/site/assinar.php";
+  $scope.iframeURLassinatura = "http://www.jornaldopovo.com.br/mobile/site/noticias_interna.php?intIdConteudo="+$stateParams.chatId;
 })
 ;
