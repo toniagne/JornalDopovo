@@ -103,17 +103,17 @@ document.getElementsByTagName('head')[0].appendChild(script);
         });
 
         push.on('notification', function(data) {
-            console.log('notification event');
+            console.log(data);
             navigator.notification.alert(
                 data.message,         // message
                 null,                 // callback
-                data.title+':'+data,           // title
+                data.title,           // title
                 'Ok'                  // buttonName
             );
 
-            if(data.additionalData.coldstart){
-                       
-                       window.location.replace("#/tab/noticia/"+data.idnoticia); }
+            if(data.additionalData.coldstart){ 
+                var res = data.title.split(":");
+                       window.location.replace("#/tab/noticia/"+res[1]); }
                              
        });
     }
