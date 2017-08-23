@@ -111,9 +111,8 @@ document.getElementsByTagName('head')[0].appendChild(script);
                 'Ok'                  // buttonName
             );
 
-            if(data.additionalData.coldstart){ 
-                var res = data.title.split(":");
-                       window.location.replace("#/tab/noticia/"+res[1]); }
+            if(data.additionalData.coldstart){  
+                       window.location.replace("#/tab/noticia/"+data.title); }
                              
        });
     }
@@ -121,8 +120,13 @@ document.getElementsByTagName('head')[0].appendChild(script);
 
   app.initialize();
 
-  
+   
+        function ModifyPlaceHolder () {
+            var input = document.getElementById ("myText");
+            input.placeholder = "No need to fill this field";
+        }
   </script>
+
   </head>
   <body ng-app="starter">
     <!--

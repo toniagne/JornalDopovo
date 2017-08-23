@@ -1,6 +1,6 @@
 angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'ngCookies'])
 
-.controller('DashCtrl', function($scope, $sce, $timeout, $ionicLoading, $state) {
+.controller('DashCtrl', function($scope, $sce, $timeout, $ionicLoading, $state, $stateParams) {
   $ionicLoading.show({
     content: 'Loading',
     animation: 'fade-in',
@@ -13,7 +13,7 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'ngCookies'])
         window.location.href = '#/tab/chats';
     }
     $scope.carregaInicio = function (){
-        $state.go("tab.dash"); 
+        $scope.iframeURL ="http://www.jornaldopovo.com.br/mobile/site/index.php";
     }
     $scope.assinaturas = function (){
         window.location.href = '#/tab/account';
@@ -30,6 +30,7 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'ngCookies'])
 })
 
 .controller('ChatsCtrl', function($scope, Chats, $http) {
+  $scope.placeholder1 = "VERSÃO IMPRESSA";
   $scope.versaoImpressa = function (){
       window.location.href = '#/tab/chats';
   }
@@ -39,6 +40,11 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'ngCookies'])
   $scope.assinaturas = function (){
       window.location.href = '#/tab/account';
   }
+
+ $scope.mudatexto = function (){
+      $scope.placeholder1 = "DIGITE A DATA";
+  }
+
 
   var url =  'http://www.jornaldopovo.com.br/jpApp/edicoes.php?callback=JSON_CALLBACK';
 
@@ -115,7 +121,7 @@ $scope.trustSrc = function(src) {
   $scope.iframeURLassinatura = "http://www.jornaldopovo.com.br/site/assinar.php";
 })
 
-.controller('NoticiaCtrl', function($scope, $sce, $stateParams, $state) {
+.controller('NoticiaCtrl', function($scope, $sce, $stateParams, $state, $http) {
  
   $scope.versaoImpressa = function (){
       window.location.href = '#/tab/chats';
@@ -132,6 +138,18 @@ $scope.trustSrc = function(src) {
   $scope.trustSrc = function(src) {
       return $sce.trustAsResourceUrl(src);
   }
-  $scope.iframeURLassinatura = "http://www.jornaldopovo.com.br/mobile/site/noticias_interna.php?intIdConteudo="+$stateParams.chatId;
+
+  var url =  'http://www.jornaldopovo.com.br/guiafoneApp/edicoes.php?callback=JSON_CALLBACK&titulo='+$stateParams.chatId;
+
+   $http.jsonp(url).
+   success(function(data, status, headers, config) {
+       $scope.iframeURLassinatura = "http://www.jornaldopovo.com.br/mobile/site/noticias_interna.php?intIdConteudo="+data.idedicao;
+      console.log(data);
+   }).
+   error(function(data, status, headers, config) {
+     console.log('erro');
+   });
+
+  
 })
 ;
