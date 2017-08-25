@@ -13,7 +13,7 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'ngCookies'])
         window.location.href = '#/tab/chats';
     }
     $scope.carregaInicio = function (){
-        $scope.iframeURL ="http://www.jornaldopovo.com.br/mobile/site/index.php";
+       $state.go("tab.recarrega"); 
     }
     $scope.assinaturas = function (){
         window.location.href = '#/tab/account';
@@ -28,14 +28,30 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'ngCookies'])
     $scope.iframeURL ="http://www.jornaldopovo.com.br/mobile/site/index.php";
 
 })
+.controller('RecarregaCtrl', function($scope, Chats, $http, $timeout, $state, $ionicLoading ) {
+       $ionicLoading.show({
+    content: 'Loading',
+    animation: 'fade-in',
+    showBackdrop: true,
+    maxWidth: 200,
+    showDelay: 0
+  });
+      $timeout(function () {
+        $ionicLoading.hide();
+        window.location.href = '#/tab/desh'; 
+      }, 1000);
+        
 
-.controller('ChatsCtrl', function($scope, Chats, $http) {
+
+})
+
+.controller('ChatsCtrl', function($scope, Chats, $http, $state) {
   $scope.placeholder1 = "VERSÃO IMPRESSA";
   $scope.versaoImpressa = function (){
       window.location.href = '#/tab/chats';
   }
   $scope.carregaInicio = function (){
-      window.location.href = '#/tab/dash';
+      $state.go("tab.recarrega"); 
   }
   $scope.assinaturas = function (){
       window.location.href = '#/tab/account';
@@ -77,7 +93,7 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'ngCookies'])
       window.location.href = '#/tab/chats';
   }
   $scope.carregaInicio = function (){
-      $state.go("tab.dash"); 
+     $state.go("tab.recarrega"); 
   }
   $scope.assinaturas = function (){
       window.location.href = '#/tab/account';
@@ -107,7 +123,7 @@ $scope.trustSrc = function(src) {
       window.location.href = '#/tab/chats';
   }
   $scope.carregaInicio = function (){
-      window.location.href = '#/tab/dash';
+     $state.go("tab.recarrega"); 
   }
   $scope.assinaturas = function (){
       window.location.href = '#/tab/account';
@@ -127,7 +143,7 @@ $scope.trustSrc = function(src) {
       window.location.href = '#/tab/chats';
   }
   $scope.carregaInicio = function (){
-    $state.go("tab.dash"); 
+    $state.go("tab.recarrega"); 
   }
   $scope.assinaturas = function (){
       window.location.href = '#/tab/account';

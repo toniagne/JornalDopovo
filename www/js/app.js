@@ -70,6 +70,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
       }
     })
+ .state('tab.recarrega', {
+      url: '/recarrega',
+      views: {
+        'tab-recarrega': {
+          templateUrl: 'templates/recarrega.html',
+          controller: 'RecarregaCtrl'
+        }
+      }
+    })
 
     .state('tab.noticia', {
       url: '/noticia/:chatId',
