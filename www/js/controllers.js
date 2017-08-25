@@ -118,7 +118,7 @@ $scope.trustSrc = function(src) {
   }
 })
 
-.controller('AccountCtrl', function($scope, $sce) {
+.controller('AccountCtrl', function($scope, $sce, $state) {
   $scope.versaoImpressa = function (){
       window.location.href = '#/tab/chats';
   }
