@@ -2,19 +2,19 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'ngCookies'])
 
 .controller('DashCtrl', function($scope, $window, $sce, $timeout, $ionicLoading, $state, $stateParams) {
   
-  $ionicLoading.show({
-    content: 'Loading',
-    animation: 'fade-in',
-    showBackdrop: true,
-    maxWidth: 200,
-    showDelay: 0
-  });
+    $ionicLoading.show({
+      content: 'Loading',
+      animation: 'fade-in',
+      showBackdrop: true,
+      maxWidth: 200,
+      showDelay: 0
+    });
 
     $scope.versaoImpressa = function (){
         window.location.href = '#/tab/chats';
     }
     $scope.carregaInicio = function (){
-       $state.go("tab.recarrega"); 
+       $window.location.reload();
     }
     $scope.assinaturas = function (){
         window.location.href = '#/tab/account';
@@ -23,21 +23,21 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'ngCookies'])
         window.location.href = '#/tab/contato';
     }
 
-    $scope.trustSrc = function(src) {
-
+    $scope.trustSrc = function(src) { 
       $timeout(function () {
         $ionicLoading.hide();
       }, 3000);
         return $sce.trustAsResourceUrl(src);
-      }
+    }
+
     $scope.iframeURL ="http://www.jornaldopovo.com.br/mobile/site/index.php";
 
 })
 .controller('RecarregaCtrl', function($window, $rootScope, $location, $scope, Chats, $http, $timeout, $state, $ionicLoading ) {
        
-       $window.location.reload();
+      
 
-       $ionicLoading.show({
+  $ionicLoading.show({
     content: 'Loading',
     animation: 'fade-in',
     showBackdrop: true,
@@ -60,13 +60,13 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'ngCookies'])
   }
 
   $scope.carregaInicio = function (){
-      $state.go("tab.dash"); 
+      $state.go("tab.recarrega"); 
   }
 
   $scope.assinaturas = function (){
       window.location.href = '#/tab/account';
   }
-  
+
      $scope.abreContato = function (){
         window.location.href = '#/tab/contato';
     }
