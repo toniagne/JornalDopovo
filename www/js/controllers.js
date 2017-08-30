@@ -66,7 +66,10 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'ngCookies'])
   $scope.assinaturas = function (){
       window.location.href = '#/tab/account';
   }
-
+  
+     $scope.abreContato = function (){
+        window.location.href = '#/tab/contato';
+    }
  $scope.mudatexto = function (){
       $scope.placeholder1 = "DIGITE A DATA | 01-01-2017";
   }
@@ -147,6 +150,10 @@ $scope.trustSrc = function(src) {
   $scope.assinaturas = function (){
       window.location.href = '#/tab/account';
   }
+     $scope.abreContato = function (){
+        window.location.href = '#/tab/contato';
+    }
+
   $scope.settings = {
     enableFriends: true
   };

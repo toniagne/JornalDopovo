@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.joranldopovo.toni" version="1.0.23" versionCode="1023" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.jornaldopovo.toni" version="1.0.24" versionCode="1024" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Jornal do Povo</name>
     <description>
-        Formando Opiniões
+        Não lê, não sabe !
     </description>
     <author email="toniagne@gmail.com" href="http://phonegap.com">
         Toni Agne
