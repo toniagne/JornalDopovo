@@ -90,6 +90,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     })
 
+    .state('tab.contato', {
+      url: '/contato',
+      views: {
+        'tab-contato': {
+          templateUrl: 'templates/tab-contato.html',
+          controller: 'ContatoCtrl'
+        }
+      }
+    })
+
   .state('tab.account', {
     url: '/account',
     views: {

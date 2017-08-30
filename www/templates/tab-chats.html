@@ -2,15 +2,15 @@
   <ion-floating-menu menu-color="#ED3237" menu-open-color="#ED3237">
     <ion-floating-item button-color="#ED3237" click="versaoImpressa()" icon="ion-camera" text="Versão Impressa"></ion-floating-item>
     <ion-floating-item button-color="#ED3237" click="assinaturas()" icon="ion-person" text="Assinaturas" ng-href="#/tab/assinar"></ion-floating-item>
-    <ion-floating-item button-color="#0977A3" click="carregaInicio()" icon-image-class="imageClass" icon-image-path="img/logo-jp.png" text="Jornal do Povo"></ion-floating-item>
+    <ion-floating-item button-color="#0977A3" click="carregaInicio('impressa')" icon-image-class="imageClass" icon-image-path="img/logo-jp.png" text="Jornal do Povo"></ion-floating-item>
   </ion-floating-menu>
   <ion-content>
     <div class="list">
       <div class="item item-input-inset">
         <label class="item item-input-wrapper">
-          <input type="number" ng-model='maskModel.data' mask='99/99/9999' placeholder="{{placeholder1}}" ng-focus="mudatexto()">
+          <input type="tel" ng-model='data'  placeholder="{{placeholder1}}" ng-focus="mudatexto()">
         </label>
-        <a class="button button-icon icon ion-search"></a>
+        <a class="button button-icon icon ion-search" ng-click='pesquisaJP(data);'></a>
       </div>
 
     </div>

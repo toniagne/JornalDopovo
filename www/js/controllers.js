@@ -1,6 +1,7 @@
 angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'ngCookies'])
 
-.controller('DashCtrl', function($scope, $sce, $timeout, $ionicLoading, $state, $stateParams) {
+.controller('DashCtrl', function($scope, $window, $sce, $timeout, $ionicLoading, $state, $stateParams) {
+  
   $ionicLoading.show({
     content: 'Loading',
     animation: 'fade-in',
@@ -18,8 +19,12 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'ngCookies'])
     $scope.assinaturas = function (){
         window.location.href = '#/tab/account';
     }
+     $scope.abreContato = function (){
+        window.location.href = '#/tab/contato';
+    }
 
     $scope.trustSrc = function(src) {
+
       $timeout(function () {
         $ionicLoading.hide();
       }, 3000);
@@ -28,7 +33,10 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'ngCookies'])
     $scope.iframeURL ="http://www.jornaldopovo.com.br/mobile/site/index.php";
 
 })
-.controller('RecarregaCtrl', function($scope, Chats, $http, $timeout, $state, $ionicLoading ) {
+.controller('RecarregaCtrl', function($window, $rootScope, $location, $scope, Chats, $http, $timeout, $state, $ionicLoading ) {
+       
+       $window.location.reload();
+
        $ionicLoading.show({
     content: 'Loading',
     animation: 'fade-in',
@@ -37,12 +45,12 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'ngCookies'])
     showDelay: 0
   });
       $timeout(function () {
-        $ionicLoading.hide();
-        window.location.href = '#/tab/desh'; 
+        $ionicLoading.hide(); 
+
+        $state.transitionTo('tab.dash', null, {reload: true, notify:true});
       }, 1000);
         
-
-
+ 
 })
 
 .controller('ChatsCtrl', function($scope, Chats, $http, $state) {
@@ -50,17 +58,31 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'ngCookies'])
   $scope.versaoImpressa = function (){
       window.location.href = '#/tab/chats';
   }
+
   $scope.carregaInicio = function (){
-      $state.go("tab.recarrega"); 
+      $state.go("tab.dash"); 
   }
+
   $scope.assinaturas = function (){
       window.location.href = '#/tab/account';
   }
 
  $scope.mudatexto = function (){
-      $scope.placeholder1 = "DIGITE A DATA";
+      $scope.placeholder1 = "DIGITE A DATA | 01-01-2017";
   }
 
+  $scope.pesquisaJP = function(data){
+    var url =  'http://www.jornaldopovo.com.br/jpApp/pesquisaedicoes.php?callback=JSON_CALLBACK&data='+data;
+
+   $http.jsonp(url).
+   success(function(data, status, headers, config) {
+      $scope.edicoes = data;
+      console.log(data);
+   }).
+   error(function(data, status, headers, config) {
+     console.log('erro');
+   });
+  }
 
   var url =  'http://www.jornaldopovo.com.br/jpApp/edicoes.php?callback=JSON_CALLBACK';
 
@@ -89,11 +111,12 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'ngCookies'])
       window.location.href = '#/tab/chats';
   }
   $scope.carregaInicio = function (){
-     $state.go("tab.recarrega"); 
+     $state.go("tab.dash"); 
   }
   $scope.assinaturas = function (){
       window.location.href = '#/tab/account';
   }
+
  console.log($stateParams.chatId);
 var res = $stateParams.chatId.split("-");
 $scope.dataedicao = res[1]+res[2]+res[3];
@@ -133,6 +156,41 @@ $scope.trustSrc = function(src) {
   $scope.iframeURLassinatura = "http://www.jornaldopovo.com.br/site/assinar.php";
 })
 
+.controller('ContatoCtrl', function($scope, $sce, $stateParams, $state, $http, $ionicPopup) {
+    $scope.versaoImpressa = function (){
+        window.location.href = '#/tab/chats';
+    }
+    $scope.carregaInicio = function (){
+       $state.go("tab.dash"); 
+    }
+    $scope.assinaturas = function (){
+        window.location.href = '#/tab/account';
+    }
+     $scope.abreContato = function (){
+        window.location.href = '#/tab/contato';
+    }
+
+    $scope.submit = function (dataForm, data){
+      console.log(data);
+    var url =  'http://www.jornaldopovo.com.br/jpApp/enviaContato.php?callback=JSON_CALLBACK'+
+    '&nome='+data.nome +
+    '&telefone='+data.telefone + 
+    '&email='+data.email +
+    '&observacao='+data.observacao;
+
+   $http.jsonp(url).
+   success(function(data, status, headers, config) {
+         $ionicPopup.alert({
+                     title: 'Aviso',
+                     content: 'Seu contato foi enviado com sucesso'
+                   });
+   }).
+   error(function(data, status, headers, config) {
+     console.log('erro');
+   });
+    }
+})
+
 .controller('NoticiaCtrl', function($scope, $sce, $stateParams, $state, $http) {
  
   $scope.versaoImpressa = function (){
@@ -150,6 +208,7 @@ $scope.trustSrc = function(src) {
   $scope.trustSrc = function(src) {
       return $sce.trustAsResourceUrl(src);
   }
+
 
   var url =  'http://www.jornaldopovo.com.br/guiafoneApp/edicoes.php?callback=JSON_CALLBACK&titulo='+$stateParams.chatId;
 
