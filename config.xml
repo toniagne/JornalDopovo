@@ -2,7 +2,7 @@
 <widget id="com.jornaldopovo.toni" version="1.0.25" versionCode="1025" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Jornal do Povo</name>
     <description>
-        Não lê, não sabe !
+        Não lê, não sabe 
     </description>
     <author email="toniagne@gmail.com" href="http://phonegap.com">
         Toni Agne
@@ -40,11 +40,7 @@
     <feature name="SocialSharing">
      <param name="android-package" value="nl.xservices.plugins.SocialSharing" />
     </feature>
-
-   <plugin name="phonegap-plugin-push" source="npm" spec="~1.10.0">
-        <variable name="SENDER_ID" value="AAAAXthqTyQ:APA91bFx7022rS40rzMaugYHx8BpXaKCIWNfhFEPtdg8tvUOVZTCUo9fVEjPmSaDYg-yWXmWorvKKG5FJBYHfUUiNnPStJbBS0q6L0kuJX4w_XXloLtwYuE4fd5sGmJdNKYu6jSPyIwM" />
-    </plugin>
-
+ 
     <icon src="icon.png" />
     <platform name="android">
         <icon density="ldpi" src="res/icon/android/drawable-ldpi-icon.png" />
@@ -84,6 +80,7 @@
         <icon height="58" platform="ios" src="www/res/icon/ios/icon-small@2x.png" width="58" />
         <icon height="87" platform="ios" src="www/res/icon/ios/icon-small@3x.png" width="87" />
         <splash height="1136" platform="ios" src="res/screen/ios/Default-568h@2x~iphone.png" width="640" />
+
         <splash height="1334" platform="ios" src="res/screen/ios/Default-667h.png" width="750" />
         <splash height="2208" platform="ios" src="res/screen/ios/Default-736h.png" width="1242" />
         <splash height="1242" platform="ios" src="res/screen/ios/Default-Landscape-736h.png" width="2208" />
@@ -120,7 +117,7 @@
     <gap:splash gap:platform="android" gap:qualifier="port-mdpi" src="res/screen/android/drawable-port-mdpi-screen.png" />
     <gap:splash gap:platform="android" gap:qualifier="port-hdpi" src="res/screen/android/drawable-port-hdpi-screen.png" />
     <gap:splash gap:platform="android" gap:qualifier="port-xhdpi" src="res/screen/android/drawable-port-xhdpi-screen.png" />
-    <access origin="*" />
+   
     <allow-navigation href="http://www.jornaldopovo.com.br/*"/>
     <allow-intent href="http://*/*"/>
     <allow-intent href="https://*/*"/>
