@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.jornaldopovo.toni" version="1.0.27" versionCode="1027" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.jornaldopovo.toni" version="1.0.28" versionCode="1028" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Jornal do Povo</name>
     <description>
         Não lê, não sabe 
@@ -90,6 +90,7 @@
         <splash height="1024" platform="ios" src="res/screen/ios/Default-Portrait~ipad.png" width="768" />
         <splash height="960" platform="ios" src="res/screen/ios/Default@2x~iphone.png" width="640" />
         <splash height="480" platform="ios" src="res/screen/ios/Default~iphone.png" width="320" />
+        <splash height="558" platform="ios" src="res/screen/ios/Default-Portrait~iphone5.png" width="320" />
     </platform>
     <platform name="wp8">
         <icon height="99" platform="wp8" src="www/res/icon/wp8/ApplicationIcon.png" width="99" />
@@ -118,14 +119,5 @@
     <gap:splash gap:platform="android" gap:qualifier="port-hdpi" src="res/screen/android/drawable-port-hdpi-screen.png" />
     <gap:splash gap:platform="android" gap:qualifier="port-xhdpi" src="res/screen/android/drawable-port-xhdpi-screen.png" />
    
-    <allow-navigation href="http://www.jornaldopovo.com.br/*"/>
-    <allow-intent href="http://*/*"/>
-    <allow-intent href="https://*/*"/>
-    <allow-intent href="tel:*"/>
-    <allow-intent href="sms:*"/>
-    <allow-intent href="mailto:*"/>
-    <allow-intent href="geo:*"/>
-    <platform name="android">
-        <allow-intent href="market:*" />
-    </platform>
+     
 </widget>
