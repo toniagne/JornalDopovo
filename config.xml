@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.jornaldopovo.toni" version="1.0.29" versionCode="1029" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.jornaldopovo.toni" version="1.0.30" versionCode="1030" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Jornal do Povo</name>
     <description>
         Não lê, não sabe 
@@ -28,7 +28,7 @@
     </feature>
  <content src="index.html"/>
   <access origin="*"/>
-  <allow-navigation href="http://ionic.local/*"/>
+  <allow-navigation href="http://www.jornaldopovo.com.br/*"/>
   <allow-intent href="http://*/*"/>
   <allow-intent href="https://*/*"/>
   <allow-intent href="tel:*"/>
@@ -41,6 +41,9 @@
     </plugin>
 
     <icon src="icon.png" />
+
+
+
     <platform name="android">
         <icon density="ldpi" src="res/icon/android/drawable-ldpi-icon.png" />
         <icon density="mdpi" src="res/icon/android/drawable-mdpi-icon.png" />
@@ -82,9 +85,14 @@
     <icon height="152" platform="ios" src="www/res/icon/ios/icon-76@2x.png" width="152" /> 
     <icon height="180" platform="ios" src="www/res/icon/ios/icon-60@3x.png" width="180" />  
         
- 
+    
+  
     
 <splash height="480" platform="ios" src="res/screen/ios/Default~iphone.png" width="320" />    
+<splash height="320" platform="ios" src="res/screen/ios/screen-iphone-landscape.png" width="480" />  
+
+<splash height="640" platform="ios" src="res/screen/ios/screen-iphone-landscape-2x.png" width="960" /> 
+
 <splash height="960" platform="ios" src="res/screen/ios/Default@2x~iphone.png" width="640" />
 <splash height="1136" platform="ios" src="res/screen/ios/Default-568h@2x~iphone.png" width="640" />
 <splash height="1024" platform="ios" src="res/screen/ios/Default-Portrait~ipad.png" width="768" />
