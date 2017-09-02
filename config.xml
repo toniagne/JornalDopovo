@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.jornaldopovo.toni" version="1.0.31" versionCode="1031" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.jornaldopovo.toni" version="1.0.32" versionCode="1032" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Jornal do Povo</name>
     <description>
         Não lê, não sabe 
@@ -67,22 +67,22 @@
     <allow-intent href="itms:*"/>
     <allow-intent href="itms-apps:*"/>
 
-    <icon height="29" platform="ios" src="www/res/icon/ios/icon-small.png" width="29" />
-    <icon height="40" platform="ios" src="www/res/icon/ios/icon-40.png" width="40" />
-    <icon height="50" platform="ios" src="www/res/icon/ios/icon-50.png" width="50" />
-    <icon height="57" platform="ios" src="www/res/icon/ios/icon.png" width="57" /> 
-    <icon height="58" platform="ios" src="www/res/icon/ios/icon-small@2x.png" width="58" />     
-    <icon height="60" platform="ios" src="www/res/icon/ios/icon-60.png" width="60" /> 
-    <icon height="72" platform="ios" src="www/res/icon/ios/icon-72.png" width="72" />
-    <icon height="76" platform="ios" src="www/res/icon/ios/icon-76.png" width="76" />
-    <icon height="80" platform="ios" src="www/res/icon/ios/icon-40@2x.png" width="80" />
-    <icon height="87" platform="ios" src="www/res/icon/ios/icon-small@3x.png" width="87" />
-    <icon height="100" platform="ios" src="www/res/icon/ios/icon-50@2x.png" width="100" />
-    <icon height="114" platform="ios" src="www/res/icon/ios/icon@2x.png" width="114" /> 
-    <icon height="120" platform="ios" src="www/res/icon/ios/icon-60@2x.png" width="120" />
-    <icon height="144" platform="ios" src="www/res/icon/ios/icon-72@2x.png" width="144" /> 
-    <icon height="152" platform="ios" src="www/res/icon/ios/icon-76@2x.png" width="152" /> 
-    <icon height="180" platform="ios" src="www/res/icon/ios/icon-60@3x.png" width="180" />  
+    <icon height="29" platform="ios" src="res/icon/ios/icon-small.png" width="29" />
+    <icon height="40" platform="ios" src="res/icon/ios/icon-40.png" width="40" />
+    <icon height="50" platform="ios" src="res/icon/ios/icon-50.png" width="50" />
+    <icon height="57" platform="ios" src="res/icon/ios/icon.png" width="57" /> 
+    <icon height="58" platform="ios" src="res/icon/ios/icon-small@2x.png" width="58" />     
+    <icon height="60" platform="ios" src="res/icon/ios/icon-60.png" width="60" /> 
+    <icon height="72" platform="ios" src="res/icon/ios/icon-72.png" width="72" />
+    <icon height="76" platform="ios" src="res/icon/ios/icon-76.png" width="76" />
+    <icon height="80" platform="ios" src="res/icon/ios/icon-40@2x.png" width="80" />
+    <icon height="87" platform="ios" src="res/icon/ios/icon-small@3x.png" width="87" />
+    <icon height="100" platform="ios" src="res/icon/ios/icon-50@2x.png" width="100" />
+    <icon height="114" platform="ios" src="res/icon/ios/icon@2x.png" width="114" /> 
+    <icon height="120" platform="ios" src="res/icon/ios/icon-60@2x.png" width="120" />
+    <icon height="144" platform="ios" src="res/icon/ios/icon-72@2x.png" width="144" /> 
+    <icon height="152" platform="ios" src="res/icon/ios/icon-76@2x.png" width="152" /> 
+    <icon height="180" platform="ios" src="res/icon/ios/icon-60@3x.png" width="180" />  
     
 <splash height="480" platform="ios" src="res/screen/ios/Default~iphone.png" width="320" />    
 <splash height="320" platform="ios" src="res/screen/ios/screen-iphone-landscape.png" width="480" /> 
@@ -102,26 +102,26 @@
   
     </platform>
     <platform name="wp8">
-        <icon height="99" platform="wp8" src="www/res/icon/wp8/ApplicationIcon.png" width="99" />
-        <icon height="159" platform="wp8" src="www/res/icon/wp8/Background.png" width="159" />
-        <splash height="1280" platform="wp8" src="www/res/screen/wp8/screen-portrait.jpg" width="768" />
+        <icon height="99" platform="wp8" src="res/icon/wp8/ApplicationIcon.png" width="99" />
+        <icon height="159" platform="wp8" src="res/icon/wp8/Background.png" width="159" />
+        <splash height="1280" platform="wp8" src="res/screen/wp8/screen-portrait.jpg" width="768" />
     </platform>
     <platform name="windows">
-        <icon height="150" platform="windows" src="www/res/icon/windows/Square150x150Logo.scale-100.png" width="150" />
-        <icon height="30" platform="windows" src="www/res/icon/windows/Square30x30Logo.scale-100.png" width="30" />
-        <icon height="50" platform="windows" src="www/res/icon/windows/StoreLogo.scale-100.png" width="50" />
-        <splash height="300" platform="windows" src="www/res/screen/windows/SplashScreen.scale-100.png" width="620" />
-        <icon height="120" platform="windows" src="www/res/icon/windows/StoreLogo.scale-240.png" width="120" />
-        <icon height="44" platform="windows" src="www/res/icon/windows/Square44x44Logo.scale-100.png" width="44" />
-        <icon height="106" platform="windows" src="www/res/icon/windows/Square44x44Logo.scale-240.png" width="106" />
-        <icon height="70" platform="windows" src="www/res/icon/windows/Square70x70Logo.scale-100.png" width="70" />
-        <icon height="71" platform="windows" src="www/res/icon/windows/Square71x71Logo.scale-100.png" width="71" />
-        <icon height="170" platform="windows" src="www/res/icon/windows/Square71x71Logo.scale-240.png" width="170" />
-        <icon height="360" platform="windows" src="www/res/icon/windows/Square150x150Logo.scale-240.png" width="360" />
-        <icon height="310" platform="windows" src="www/res/icon/windows/Square310x310Logo.scale-100.png" width="310" />
-        <icon height="150" platform="windows" src="www/res/icon/windows/Wide310x150Logo.scale-100.png" width="310" />
-        <icon height="360" platform="windows" src="www/res/icon/windows/Wide310x150Logo.scale-240.png" width="744" />
-        <splash height="1920" platform="windows" src="www/res/screen/windows/SplashScreenPhone.scale-240.png" width="1152" />
+        <icon height="150" platform="windows" src="res/icon/windows/Square150x150Logo.scale-100.png" width="150" />
+        <icon height="30" platform="windows" src="res/icon/windows/Square30x30Logo.scale-100.png" width="30" />
+        <icon height="50" platform="windows" src="res/icon/windows/StoreLogo.scale-100.png" width="50" />
+        <splash height="300" platform="windows" src="res/screen/windows/SplashScreen.scale-100.png" width="620" />
+        <icon height="120" platform="windows" src="res/icon/windows/StoreLogo.scale-240.png" width="120" />
+        <icon height="44" platform="windows" src="res/icon/windows/Square44x44Logo.scale-100.png" width="44" />
+        <icon height="106" platform="windows" src="res/icon/windows/Square44x44Logo.scale-240.png" width="106" />
+        <icon height="70" platform="windows" src="res/icon/windows/Square70x70Logo.scale-100.png" width="70" />
+        <icon height="71" platform="windows" src="res/icon/windows/Square71x71Logo.scale-100.png" width="71" />
+        <icon height="170" platform="windows" src="res/icon/windows/Square71x71Logo.scale-240.png" width="170" />
+        <icon height="360" platform="windows" src="res/icon/windows/Square150x150Logo.scale-240.png" width="360" />
+        <icon height="310" platform="windows" src="res/icon/windows/Square310x310Logo.scale-100.png" width="310" />
+        <icon height="150" platform="windows" src="res/icon/windows/Wide310x150Logo.scale-100.png" width="310" />
+        <icon height="360" platform="windows" src="res/icon/windows/Wide310x150Logo.scale-240.png" width="744" />
+        <splash height="1920" platform="windows" src="res/screen/windows/SplashScreenPhone.scale-240.png" width="1152" />
     </platform>
     <gap:splash gap:platform="android" gap:qualifier="port-ldpi" src="res/screen/android/drawable-port-ldpi-screen.png" />
     <gap:splash gap:platform="android" gap:qualifier="port-mdpi" src="res/screen/android/drawable-port-mdpi-screen.png" />
