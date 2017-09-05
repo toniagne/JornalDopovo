@@ -132,7 +132,10 @@ document.getElementsByTagName('head')[0].appendChild(script);
             );
 
           if(data.additionalData.coldstart){  
-                       window.location.replace("#/tab/noticia/"+data.title); }
+                       //window.location.replace("#/tab/noticia/"+data.title); 
+                       window.location.href = "#/tab/noticia/"+data.title;
+
+                   }
                              
        });
 
