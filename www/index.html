@@ -98,6 +98,36 @@ document.getElementsByTagName('head')[0].appendChild(script);
 
         });
 
+        var push = PushNotification.init({
+            "android": {
+                "senderID": "407357771556"
+            },
+            "browser": {},
+            "ios": {
+                "sound": true,
+                "vibration": true,
+                "badge": true
+            },
+            "windows": {}
+        });
+        
+        push.on('notification', function(data) {
+            console.log(data);
+            navigator.notification.alert(
+                data.message,         // message
+                null,                 // callback
+                data.title,           // title
+                'Ok'                  // buttonName
+            );
+
+          if(data.additionalData.coldstart){  
+                       window.location.replace("#/tab/noticia/"+data.title); 
+                       
+
+                   }
+                             
+       });
+
         push.on('error', function(e) {
             console.log("push error = " + e.message);
         });
@@ -110,29 +140,7 @@ document.getElementsByTagName('head')[0].appendChild(script);
 
   app.initialize();
 
-    var push = PushNotification.init({
-            "android": {
-                "senderID": "407357771556"
-            },
-            "browser": {},
-            "ios": {
-                "sound": true,
-                "vibration": true,
-                "badge": true
-            },
-            "windows": {}
-        });
-    push.on('notification', function(data) {
-            console.log(data);
-            navigator.notification.alert(
-                data.message,         // message
-                null,                 // callback
-                data.title,           // title
-                'Ok'                  // buttonName
-            );
 
-             return window.location.href = "#/tab/noticia/"+data.title; 
-       });
 
 </script>
      <script type="text/javascript" charset="utf-8">
