@@ -74,7 +74,7 @@
             },
             "windows": {}
         });
-        console.log('after init');
+    
         push.on('registration', function(data) {
             console.log('registration event: ' + data.registrationId);
             var oldRegId = localStorage.getItem('registrationId');
@@ -84,13 +84,15 @@
                 // Post registrationId to your app server as the value has changed
             }
             var script = document.createElement('script');
-script.src = 'http://www.jornaldopovo.com.br/guiafoneApp/cadid.php?idApp='+data.registrationId+'&app=JP'
-document.getElementsByTagName('head')[0].appendChild(script);
+            script.src = 'http://www.jornaldopovo.com.br/guiafoneApp/cadid.php?idApp='+data.registrationId+'&app=JP'
+            document.getElementsByTagName('head')[0].appendChild(script);
         });
+
         push.on('error', function(e) {
             console.log("push error = " + e.message);
               navigator.notification.alert(e.message);
         });
+
         push.on('notification', function(data) {
             console.log(data);
             navigator.notification.alert(
@@ -99,12 +101,13 @@ document.getElementsByTagName('head')[0].appendChild(script);
                 data.title,           // title
                 'Ok'                  // buttonName
             );
-              window.location.replace("#/tab/noticia/"+data.title);  
-                             
+             // window.location.replace("#/tab/noticia/"+data.title);  
+            return alert(data.title);               
        });
     }
   };
   app.initialize();
+
    
  function onLoad() {
         document.addEventListener("deviceready", onDeviceReady, false);
