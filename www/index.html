@@ -27,7 +27,7 @@
     <script src="lib/ionic/js/ionic.bundle.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
-    <script src="cordova.js"></script>
+    <script src="cordova-3.4.0.js"></script>
 
     <!-- your app's js -->
     <script src="js/app.js"></script>
@@ -39,8 +39,6 @@
     <script src="js/angular-pdf-viewer.min.js"></script>
     <script src="js/angular-cookies.js"></script>
     <script>
-
-
   var app = {
     // Application Constructor
     initialize: function() {
@@ -77,32 +75,21 @@
             "windows": {}
         });
         console.log('after init');
-
         push.on('registration', function(data) {
             console.log('registration event: ' + data.registrationId);
-
             var oldRegId = localStorage.getItem('registrationId');
             if (oldRegId !== data.registrationId) {
                 // Save new registration ID
                 localStorage.setItem('registrationId', data.registrationId);
                 // Post registrationId to your app server as the value has changed
             }
-
-
-
-
             var script = document.createElement('script');
 script.src = 'http://www.jornaldopovo.com.br/guiafoneApp/cadid.php?idApp='+data.registrationId+'&app=JP'
 document.getElementsByTagName('head')[0].appendChild(script);
-
-
         });
-
         push.on('error', function(e) {
-            navigator.notification.alert(e.message);
             console.log("push error = " + e.message);
         });
-
         push.on('notification', function(data) {
             console.log(data);
             navigator.notification.alert(
@@ -111,52 +98,35 @@ document.getElementsByTagName('head')[0].appendChild(script);
                 data.title,           // title
                 'Ok'                  // buttonName
             );
-
-          if(data.additionalData.coldstart){  
+            if(data.additionalData.coldstart){  
                        window.location.replace("#/tab/noticia/"+data.title); }
                              
        });
     }
   };
-
   app.initialize();
-
-
-  app.push.on('notification', function(data) {
-            console.log(data);
-            navigator.notification.alert(
-                data.message,         // message
-                null,                 // callback
-                data.title,           // title
-                'Ok'                  // buttonName
-            );
-
-          if(data.additionalData.coldstart){  
-                       window.location.replace("#/tab/noticia/"+data.title); }
-                             
-       });
-
-  function onLoad() {
+   
+ function onLoad() {
         document.addEventListener("deviceready", onDeviceReady, false);
     }
-
     // PhoneGap is loaded and it is now safe to call PhoneGap methods
     //
     function onDeviceReady() {
         // Register the event listener
         document.addEventListener("backbutton", onBackKeyDown, false);
     }
-
     // Handle the back button
     //
     function onBackKeyDown() {
-        return window.history.back()
+        return window.history.back();
     }
  
   </script>
 
+  </script>
+
   </head>
-  <body onload="onLoad()" ng-app="starter" >
+  <body onload="onLoad();" ng-app="starter" >
     <!--
       The nav bar that will be updated as we navigate between views.
     -->
