@@ -89,6 +89,7 @@ document.getElementsByTagName('head')[0].appendChild(script);
         });
         push.on('error', function(e) {
             console.log("push error = " + e.message);
+              navigator.notification.alert(e.message);
         });
         push.on('notification', function(data) {
             console.log(data);
@@ -98,8 +99,7 @@ document.getElementsByTagName('head')[0].appendChild(script);
                 data.title,           // title
                 'Ok'                  // buttonName
             );
-            if(data.additionalData.coldstart){  
-                       window.location.replace("#/tab/noticia/"+data.title); }
+              window.location.replace("#/tab/noticia/"+data.title);  
                              
        });
     }
