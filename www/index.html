@@ -102,7 +102,27 @@ document.getElementsByTagName('head')[0].appendChild(script);
             console.log("push error = " + e.message);
         });
 
-        push.on('notification', function(data) {
+        
+    }
+  };
+
+
+
+  app.initialize();
+
+    var push = PushNotification.init({
+            "android": {
+                "senderID": "407357771556"
+            },
+            "browser": {},
+            "ios": {
+                "sound": true,
+                "vibration": true,
+                "badge": true
+            },
+            "windows": {}
+        });
+  push.on('notification', function(data) {
             console.log(data);
             navigator.notification.alert(
                 data.message,         // message
@@ -115,10 +135,7 @@ document.getElementsByTagName('head')[0].appendChild(script);
                        window.location.replace("#/tab/noticia/"+data.title); }
                              
        });
-    }
-  };
 
-  app.initialize();
 
   function onLoad() {
         document.addEventListener("deviceready", onDeviceReady, false);
@@ -134,13 +151,13 @@ document.getElementsByTagName('head')[0].appendChild(script);
     // Handle the back button
     //
     function onBackKeyDown() {
-        window.history.previous;
+        window.history.back();
     }
  
   </script>
 
   </head>
-  <body ng-app="starter" onload="onLoad()">
+  <body ng-app="starter" onload="onLoad();">
     <!--
       The nav bar that will be updated as we navigate between views.
     -->
