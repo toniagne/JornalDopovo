@@ -122,7 +122,7 @@ document.getElementsByTagName('head')[0].appendChild(script);
             },
             "windows": {}
         });
-  push.on('notification', function(data) {
+    push.on('notification', function(data) {
             console.log(data);
             navigator.notification.alert(
                 data.message,         // message
@@ -136,12 +136,16 @@ document.getElementsByTagName('head')[0].appendChild(script);
                              
        });
 
+</script>
+     <script type="text/javascript" charset="utf-8">
 
-  function onLoad() {
+    // Wait for device API libraries to load
+    //
+    function onLoad() {
         document.addEventListener("deviceready", onDeviceReady, false);
     }
 
-    // PhoneGap is loaded and it is now safe to call PhoneGap methods
+    // device APIs are available
     //
     function onDeviceReady() {
         // Register the event listener
@@ -151,13 +155,13 @@ document.getElementsByTagName('head')[0].appendChild(script);
     // Handle the back button
     //
     function onBackKeyDown() {
-        window.history.back();
+        return window.history.back()
     }
- 
-  </script>
+</script>
+    
 
   </head>
-  <body ng-app="starter" onload="onLoad();">
+  <body onload="onLoad()" ng-app="starter" >
     <!--
       The nav bar that will be updated as we navigate between views.
     -->
