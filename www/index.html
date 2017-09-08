@@ -27,9 +27,8 @@
     <script src="lib/ionic/js/ionic.bundle.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
-    <script src="cordova-3.4.0.js"></script>
-    <script type="text/javascript" src="PushNotification.js"></script>
-    
+    <script src="cordova.js"></script>
+
     <!-- your app's js -->
     <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>
@@ -57,15 +56,12 @@
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        document.addEventListener("backbutton", this.onBackKeyDown, false);
+        console.log('Received Device Ready Event');
+        console.log('calling setup push');
         app.setupPush();
     },
-
-    onBackKeyDown: function() {
-         window.history.back();
-    },
     setupPush: function() {
-       
+        console.log('calling push init');
         var push = PushNotification.init({
             "android": {
                 "senderID": "407357771556"
@@ -78,84 +74,56 @@
             },
             "windows": {}
         });
-
-        push.on('registration', function(data) { 
+        console.log('after init');
+        push.on('registration', function(data) {
+            console.log('registration event: ' + data.registrationId);
             var oldRegId = localStorage.getItem('registrationId');
-            if (oldRegId !== data.registrationId) { 
-                localStorage.setItem('registrationId', data.registrationId); 
+            if (oldRegId !== data.registrationId) {
+                // Save new registration ID
+                localStorage.setItem('registrationId', data.registrationId);
+                // Post registrationId to your app server as the value has changed
             }
             var script = document.createElement('script');
-            script.src = 'http://www.jornaldopovo.com.br/guiafoneApp/cadid.php?idApp='+data.registrationId+'&app=JP'
-            document.getElementsByTagName('head')[0].appendChild(script);
+script.src = 'http://www.jornaldopovo.com.br/guiafoneApp/cadid.php?idApp='+data.registrationId+'&app=JP'
+document.getElementsByTagName('head')[0].appendChild(script);
         });
-
         push.on('error', function(e) {
             console.log("push error = " + e.message);
-              navigator.notification.alert(e.message);
         });
-
-        push.on('notification', function(data) {            
+        push.on('notification', function(data) {
+            console.log(data);
             navigator.notification.alert(
                 data.message,         // message
                 null,                 // callback
                 data.title,           // title
                 'Ok'                  // buttonName
             );
-
-            if(data.additionalData.coldstart){  
+          if(data.additionalData.coldstart){  
                        window.location.replace("#/tab/noticia/"+data.title); }
                              
        });
     }
-  }; 
- 
+  };
   app.initialize();
-var push = PushNotification.init({
-            "android": {
-                "senderID": "407357771556"
-            },
-            "browser": {},
-            "ios": {
-                "sound": true,
-                "vibration": true,
-                "badge": true
-            },
-            "windows": {}
-        });
-
-        push.on('registration', function(data) { 
-            var oldRegId = localStorage.getItem('registrationId');
-            if (oldRegId !== data.registrationId) { 
-                localStorage.setItem('registrationId', data.registrationId); 
-            }
-            var script = document.createElement('script');
-            script.src = 'http://www.jornaldopovo.com.br/guiafoneApp/cadid.php?idApp='+data.registrationId+'&app=JP'
-            document.getElementsByTagName('head')[0].appendChild(script);
-        });
-
-        push.on('error', function(e) {
-            console.log("push error = " + e.message);
-              navigator.notification.alert(e.message);
-        });
-
-        push.on('notification', function(data) {            
-            navigator.notification.alert(
-                data.message,         // message
-                null,                 // callback
-                data.title,           // title
-                'Ok'                  // buttonName
-            );
-
-            if(data.additionalData.coldstart){  
-                       window.location.replace("#/tab/noticia/"+data.title); }
-                             
-       });
-    </script>
-
+  function onLoad() {
+        document.addEventListener("deviceready", onDeviceReady, false);
+    }
+    // PhoneGap is loaded and it is now safe to call PhoneGap methods
+    //
+    function onDeviceReady() {
+        // Register the event listener
+        document.addEventListener("backbutton", onBackKeyDown, false);
+    }
+    // Handle the back button
+    //
+    function onBackKeyDown() {
+        window.location.href = '#/tab/account';
+    }
  
+  </script>
 
   </head>
-  <body ng-app="starter" >
+  <body ng-app="starter" onload="onLoad()">
     <!--
       The nav bar that will be updated as we navigate between views.
     -->
