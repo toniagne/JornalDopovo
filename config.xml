@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.jornaldopovo.toni" version="1.0.45" versionCode="1045" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.jornaldopovo.toni" version="1.0.46" versionCode="1046" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Jornal do Povo</name>
     <description>
         Não lê, não sabe 
@@ -16,8 +16,8 @@
     <preference name="ShowSplashScreenSpinner" value="true"/>
     <preference name="FadeSplashScreen" value="false"/>
   
-  <plugin name="ionic-plugin-keyboard" spec="~2.2.1"/>
-<plugin name="cordova-plugin-battery-status" source="npm" spec="~1.1.1" />
+    <plugin name="ionic-plugin-keyboard" spec="~2.2.1"/>
+    <plugin name="cordova-plugin-battery-status" source="npm" spec="~1.1.1" />
     <plugin name="cordova-plugin-camera" source="npm" spec="~2.1.1" />
     <plugin name="cordova-plugin-media-capture" source="npm" spec="~1.2.0" />
     <plugin name="cordova-plugin-console" source="npm" spec="~1.0.2" />
@@ -53,10 +53,7 @@
         <variable name="SENDER_ID" value="AAAAXthqTyQ:APA91bFx7022rS40rzMaugYHx8BpXaKCIWNfhFEPtdg8tvUOVZTCUo9fVEjPmSaDYg-yWXmWorvKKG5FJBYHfUUiNnPStJbBS0q6L0kuJX4w_XXloLtwYuE4fd5sGmJdNKYu6jSPyIwM" />
     </plugin>
 
-    <icon src="icon.png" />
-
-
-
+    <icon src="icon.png" /> 
     <platform name="android">
         <icon density="ldpi" src="res/icon/android/drawable-ldpi-icon.png" />
         <icon density="mdpi" src="res/icon/android/drawable-mdpi-icon.png" />
