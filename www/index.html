@@ -98,13 +98,13 @@ document.getElementsByTagName('head')[0].appendChild(script);
                 data.title,           // title
                 'Ok'                  // buttonName
             );
-          if(data.additionalData.coldstart){  
-                       window.location.replace("#/tab/noticia/"+data.title); }
+            window.location.replace("#/tab/noticia/"+data.title);  
                              
        });
     }
   };
   app.initialize();
+
   function onLoad() {
         document.addEventListener("deviceready", onDeviceReady, false);
     }
@@ -123,7 +123,7 @@ document.getElementsByTagName('head')[0].appendChild(script);
   </script>
 
   </head>
-  <body ng-app="starter" onload="onLoad()">
+  <body onload="onLoad()" ng-app="starter" >
     <!--
       The nav bar that will be updated as we navigate between views.
     -->
