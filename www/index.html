@@ -91,14 +91,19 @@ document.getElementsByTagName('head')[0].appendChild(script);
             console.log("push error = " + e.message);
         });
         push.on('notification', function(data) {
-            console.log(data);
-            navigator.notification.alert(
+           
+
+            function onConfirm(buttonIndex) {
+                   return window.location.replace("#/tab/noticia/"+buttonIndex);  
+           }
+ 
+            navigator.notification.confirm(
                 data.message,         // message
-                null,                 // callback
+                onConfirm(data.title),                 // callback
                 data.title,           // title
                 'Ok'                  // buttonName
             );
-            window.location.replace("#/tab/noticia/"+data.title);  
+            
                              
        });
     }
