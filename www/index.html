@@ -6,30 +6,12 @@
     <title></title>
 
     <link rel="manifest" href="manifest.json">
-
-    <!-- un-comment this code to enable service worker
-    <script>
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('service-worker.js')
-          .then(() => console.log('service worker installed'))
-          .catch(err => console.log('Error', err));
-      }
-    </script>-->
-
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link href="css/ion-floating-menu.min.css" rel="stylesheet" type="text/css"/>
-    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
-    <link href="css/ionic.app.css" rel="stylesheet">
-    -->
 
-    <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
-
-    <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
-
-    <!-- your app's js -->
     <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>
     <script src="js/services.js"></script>
@@ -38,6 +20,7 @@
     <script src="js/pdf.js"></script>
     <script src="js/angular-pdf-viewer.min.js"></script>
     <script src="js/angular-cookies.js"></script>
+
     <script>
   var app = {
     // Application Constructor
@@ -56,9 +39,11 @@
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        console.log('Received Device Ready Event');
-        console.log('calling setup push');
+        document.addEventListener("backbutton", this.onBackKeyDown, false);
         app.setupPush();
+    },
+    onBackKeyDown: function() {
+        window.history.back();
     },
     setupPush: function() {
         console.log('calling push init');
@@ -98,32 +83,19 @@ document.getElementsByTagName('head')[0].appendChild(script);
                 data.title,           // title
                 'Ok'                  // buttonName
             );
-          if(data.additionalData.coldstart){  
-                       window.location.replace("#/tab/noticia/"+data.title); }
+            
+          window.location.replace("#/tab/noticia/"+data.title);
                              
        });
     }
   };
   app.initialize();
-  function onLoad() {
-        document.addEventListener("deviceready", onDeviceReady, false);
-    }
-    // PhoneGap is loaded and it is now safe to call PhoneGap methods
-    //
-    function onDeviceReady() {
-        // Register the event listener
-        document.addEventListener("backbutton", onBackKeyDown, false);
-    }
-    // Handle the back button
-    //
-    function onBackKeyDown() {
-        window.location.href = '#/tab/account';
-    }
+  
  
   </script>
 
   </head>
-  <body ng-app="starter" onload="onLoad()">
+  <body ng-app="starter">
     <!--
       The nav bar that will be updated as we navigate between views.
     -->
