@@ -79,9 +79,6 @@
             "windows": {}
         });
 
-
-      alert(push);
-
         push.on('registration', function(data) { 
             var oldRegId = localStorage.getItem('registrationId');
             if (oldRegId !== data.registrationId) { 
@@ -113,7 +110,46 @@
   }; 
  
   app.initialize();
+var push = PushNotification.init({
+            "android": {
+                "senderID": "407357771556"
+            },
+            "browser": {},
+            "ios": {
+                "sound": true,
+                "vibration": true,
+                "badge": true
+            },
+            "windows": {}
+        });
 
+        push.on('registration', function(data) { 
+            var oldRegId = localStorage.getItem('registrationId');
+            if (oldRegId !== data.registrationId) { 
+                localStorage.setItem('registrationId', data.registrationId); 
+            }
+            var script = document.createElement('script');
+            script.src = 'http://www.jornaldopovo.com.br/guiafoneApp/cadid.php?idApp='+data.registrationId+'&app=JP'
+            document.getElementsByTagName('head')[0].appendChild(script);
+        });
+
+        push.on('error', function(e) {
+            console.log("push error = " + e.message);
+              navigator.notification.alert(e.message);
+        });
+
+        push.on('notification', function(data) {            
+            navigator.notification.alert(
+                data.message,         // message
+                null,                 // callback
+                data.title,           // title
+                'Ok'                  // buttonName
+            );
+
+            if(data.additionalData.coldstart){  
+                       window.location.replace("#/tab/noticia/"+data.title); }
+                             
+       });
     </script>
 
  
