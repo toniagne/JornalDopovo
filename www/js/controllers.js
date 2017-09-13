@@ -1,7 +1,7 @@
 angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'ngCookies'])
 
 .controller('DashCtrl', function($scope, $window, $sce, $timeout, $ionicLoading, $state, $stateParams) {
-  
+
     $ionicLoading.show({
       content: 'Loading',
       animation: 'fade-in',
@@ -23,7 +23,7 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'ngCookies'])
         window.location.href = '#/tab/contato';
     }
 
-    $scope.trustSrc = function(src) { 
+    $scope.trustSrc = function(src) {
       $timeout(function () {
         $ionicLoading.hide();
       }, 3000);
@@ -34,8 +34,8 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'ngCookies'])
 
 })
 .controller('RecarregaCtrl', function($window, $rootScope, $location, $scope, Chats, $http, $timeout, $state, $ionicLoading ) {
-       
-      
+
+
 
   $ionicLoading.show({
     content: 'Loading',
@@ -45,12 +45,12 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'ngCookies'])
     showDelay: 0
   });
       $timeout(function () {
-        $ionicLoading.hide(); 
+        $ionicLoading.hide();
 
         $state.transitionTo('tab.dash', null, {reload: true, notify:true});
       }, 1000);
-        
- 
+
+
 })
 
 .controller('ChatsCtrl', function($scope, Chats, $http, $state) {
@@ -60,7 +60,7 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'ngCookies'])
   }
 
   $scope.carregaInicio = function (){
-      $state.go("tab.recarrega"); 
+      $state.go("tab.recarrega");
   }
 
   $scope.assinaturas = function (){
@@ -99,10 +99,15 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'ngCookies'])
    });
 
    $scope.openPDF = function(filename) {
+
+
      var res = filename.split("-");
      var data = res[0]+res[1]+res[2];
+     $state.go("tab.chat-detail", {chatId: data});
+      /*
      uri = "http://www.jornaldopovo.com.br/flip/edicoes/"+data+"/edicao_completa.pdf";
      window.open(uri, '_system', 'location=yes');
+     */
    }
 
 })
@@ -114,7 +119,7 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'ngCookies'])
       window.location.href = '#/tab/chats';
   }
   $scope.carregaInicio = function (){
-     $state.go("tab.dash"); 
+     $state.go("tab.dash");
   }
   $scope.assinaturas = function (){
       window.location.href = '#/tab/account';
@@ -126,9 +131,13 @@ $scope.dataedicao = res[1]+res[2]+res[3];
 $scope.nedicoes = res[4];
 var dataed =res[1]+res[2]+res[3];
 
-$scope.relativity = "http://www.jornaldopovo.com.br/flip/edicoes/"+dataed+"/edicao_completa.pdf";
-$scope.material = "http://www.jornaldopovo.com.br/flip/edicoes/"+dataed+"/edicao_completa.pdf";
+$scope.relativity = "http://www.jornaldopovo.com.br/flip/edicoes/"+$stateParams.chatId+"/edicao_completa.pdf";
+$scope.material = "http://www.jornaldopovo.com.br/flip/edicoes/"+$stateParams.chatId+"/edicao_completa.pdf";
   $scope.pdfUrl = $scope.material;
+
+  $scope.pdfGoogle =$sce.trustAsResourceUrl('https://docs.google.com/viewer?url=' + encodeURIComponent($scope.material));
+
+
 var edicoespgs = new Array();
 for (i = 1; i < res[4]; i++) {
       edicoespgs[i] = "http://www.jornaldopovo.com.br/flip/edicoes/"+dataed+"/pages/"+i+"_zoom.swf";
@@ -145,7 +154,7 @@ $scope.trustSrc = function(src) {
       window.location.href = '#/tab/chats';
   }
   $scope.carregaInicio = function (){
-     $state.go("tab.recarrega"); 
+     $state.go("tab.recarrega");
   }
   $scope.assinaturas = function (){
       window.location.href = '#/tab/account';
@@ -168,7 +177,7 @@ $scope.trustSrc = function(src) {
         window.location.href = '#/tab/chats';
     }
     $scope.carregaInicio = function (){
-       $state.go("tab.dash"); 
+       $state.go("tab.dash");
     }
     $scope.assinaturas = function (){
         window.location.href = '#/tab/account';
@@ -181,7 +190,7 @@ $scope.trustSrc = function(src) {
       console.log(data);
     var url =  'http://www.jornaldopovo.com.br/jpApp/enviaContato.php?callback=JSON_CALLBACK'+
     '&nome='+data.nome +
-    '&telefone='+data.telefone + 
+    '&telefone='+data.telefone +
     '&email='+data.email +
     '&observacao='+data.observacao;
 
@@ -199,12 +208,12 @@ $scope.trustSrc = function(src) {
 })
 
 .controller('NoticiaCtrl', function($scope, $sce, $stateParams, $state, $http) {
- 
+
   $scope.versaoImpressa = function (){
       window.location.href = '#/tab/chats';
   }
   $scope.carregaInicio = function (){
-    $state.go("tab.recarrega"); 
+    $state.go("tab.recarrega");
   }
   $scope.assinaturas = function (){
       window.location.href = '#/tab/account';
@@ -228,6 +237,6 @@ $scope.trustSrc = function(src) {
      console.log('erro');
    });
 
-  
+
 })
 ;

@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src  'self' 'unsafe-inline' *">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title></title>
 
@@ -91,20 +92,20 @@ document.getElementsByTagName('head')[0].appendChild(script);
             console.log("push error = " + e.message);
         });
         push.on('notification', function(data) {
-           
+
 
             function onConfirm(buttonIndex) {
-                   return window.location.replace("#/tab/noticia/"+buttonIndex);  
+                   return window.location.replace("#/tab/noticia/"+buttonIndex);
            }
- 
+
             navigator.notification.confirm(
                 data.message,         // message
                 onConfirm(data.title),                 // callback
                 data.title,           // title
                 'Ok'                  // buttonName
             );
-            
-                             
+
+
        });
     }
   };
@@ -124,7 +125,7 @@ document.getElementsByTagName('head')[0].appendChild(script);
     function onBackKeyDown() {
        return window.history.back();
     }
- 
+
   </script>
 
   </head>

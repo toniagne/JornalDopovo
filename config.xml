@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.jornaldopovo.toni" version="1.0.53" versionCode="1053" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.jornaldopovo.toni" version="1.0.54" versionCode="1054" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Jornal do Povo</name>
     <description>
-        Não lê, não sabe 
+        Não lê, não sabe
     </description>
     <author email="toniagne@gmail.com" href="http://phonegap.com">
         Toni Agne
@@ -15,7 +15,7 @@
     <preference name="SplashScreenDelay" value="4000" />
     <preference name="ShowSplashScreenSpinner" value="true"/>
     <preference name="FadeSplashScreen" value="false"/>
-  
+
     <plugin name="ionic-plugin-keyboard" spec="~2.2.1"/>
     <plugin name="cordova-plugin-battery-status" source="npm" spec="~1.1.1" />
     <plugin name="cordova-plugin-camera" source="npm" spec="~2.1.1" />
@@ -38,7 +38,7 @@
     <plugin name="cordova-plugin-vibration" source="npm" spec="~2.1.0" />
     <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1" />
 
-   
+
  <content src="index.html"/>
   <access origin="*"/>
   <allow-navigation href="http://www.jornaldopovo.com.br/*"/>
@@ -53,7 +53,7 @@
         <variable name="SENDER_ID" value="AAAAXthqTyQ:APA91bFx7022rS40rzMaugYHx8BpXaKCIWNfhFEPtdg8tvUOVZTCUo9fVEjPmSaDYg-yWXmWorvKKG5FJBYHfUUiNnPStJbBS0q6L0kuJX4w_XXloLtwYuE4fd5sGmJdNKYu6jSPyIwM" />
     </plugin>
 
-    <icon src="icon.png" /> 
+    <icon src="icon.png" />
     <platform name="android">
         <icon density="ldpi" src="res/icon/android/drawable-ldpi-icon.png" />
         <icon density="mdpi" src="res/icon/android/drawable-mdpi-icon.png" />
@@ -75,29 +75,29 @@
         <splash density="port-xxxhdpi" src="res/screen/android/drawable-port-xxxhdpi-screen.png" />
     </platform>
 
-    <platform name="ios"> 
+    <platform name="ios">
     <allow-intent href="itms:*"/>
     <allow-intent href="itms-apps:*"/>
 
     <icon height="29" platform="ios" src="res/icon/ios/icon-small.png" width="29" />
     <icon height="40" platform="ios" src="res/icon/ios/icon-40.png" width="40" />
     <icon height="50" platform="ios" src="res/icon/ios/icon-50.png" width="50" />
-    <icon height="57" platform="ios" src="res/icon/ios/icon.png" width="57" /> 
-    <icon height="58" platform="ios" src="res/icon/ios/icon-small@2x.png" width="58" />     
-    <icon height="60" platform="ios" src="res/icon/ios/icon-60.png" width="60" /> 
+    <icon height="57" platform="ios" src="res/icon/ios/icon.png" width="57" />
+    <icon height="58" platform="ios" src="res/icon/ios/icon-small@2x.png" width="58" />
+    <icon height="60" platform="ios" src="res/icon/ios/icon-60.png" width="60" />
     <icon height="72" platform="ios" src="res/icon/ios/icon-72.png" width="72" />
     <icon height="76" platform="ios" src="res/icon/ios/icon-76.png" width="76" />
     <icon height="80" platform="ios" src="res/icon/ios/icon-40@2x.png" width="80" />
     <icon height="87" platform="ios" src="res/icon/ios/icon-small@3x.png" width="87" />
     <icon height="100" platform="ios" src="res/icon/ios/icon-50@2x.png" width="100" />
-    <icon height="114" platform="ios" src="res/icon/ios/icon@2x.png" width="114" /> 
+    <icon height="114" platform="ios" src="res/icon/ios/icon@2x.png" width="114" />
     <icon height="120" platform="ios" src="res/icon/ios/icon-60@2x.png" width="120" />
-    <icon height="144" platform="ios" src="res/icon/ios/icon-72@2x.png" width="144" /> 
-    <icon height="152" platform="ios" src="res/icon/ios/icon-76@2x.png" width="152" /> 
-    <icon height="180" platform="ios" src="res/icon/ios/icon-60@3x.png" width="180" />  
-    
-<splash height="480" platform="ios" src="res/screen/ios/Default~iphone.png" width="320" />    
-<splash height="320" platform="ios" src="res/screen/ios/screen-iphone-landscape.png" width="480" /> 
+    <icon height="144" platform="ios" src="res/icon/ios/icon-72@2x.png" width="144" />
+    <icon height="152" platform="ios" src="res/icon/ios/icon-76@2x.png" width="152" />
+    <icon height="180" platform="ios" src="res/icon/ios/icon-60@3x.png" width="180" />
+
+<splash height="480" platform="ios" src="res/screen/ios/Default~iphone.png" width="320" />
+<splash height="320" platform="ios" src="res/screen/ios/screen-iphone-landscape.png" width="480" />
 <splash height="640" platform="ios" src="res/screen/ios/screen-iphone-landscape-2x.png" width="960" />
 <splash height="960" platform="ios" src="res/screen/ios/Default@2x~iphone.png" width="640" />
 <splash height="640" platform="ios" src="res/screen/ios/screen-iphone-landscape-2x.png" width="960" />
@@ -111,7 +111,7 @@
 <splash height="1334" platform="ios" src="res/screen/ios/Default-667h.png" width="750" />
 <splash height="2208" platform="ios" src="res/screen/ios/Default-736h.png" width="1242" />
 <splash height="1242" platform="ios" src="res/screen/ios/Default-Landscape-736h.png" width="2208" />
-  
+
     </platform>
     <platform name="wp8">
         <icon height="99" platform="wp8" src="res/icon/wp8/ApplicationIcon.png" width="99" />
@@ -139,6 +139,6 @@
     <gap:splash gap:platform="android" gap:qualifier="port-mdpi" src="res/screen/android/drawable-port-mdpi-screen.png" />
     <gap:splash gap:platform="android" gap:qualifier="port-hdpi" src="res/screen/android/drawable-port-hdpi-screen.png" />
     <gap:splash gap:platform="android" gap:qualifier="port-xhdpi" src="res/screen/android/drawable-port-xhdpi-screen.png" />
-   
-     
+
+
 </widget>
