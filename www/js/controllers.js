@@ -104,8 +104,10 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'ngCookies'])
      var res = filename.split("-");
      var data = res[0]+res[1]+res[2];
      $state.go("tab.chat-detail", {chatId: data});
-      /*
      uri = "http://www.jornaldopovo.com.br/flip/edicoes/"+data+"/edicao_completa.pdf";
+     return cordova.InAppBrowser.open(uri, '_blank', 'location=no');
+      /*
+
      window.open(uri, '_system', 'location=yes');
      */
    }
@@ -135,7 +137,7 @@ $scope.relativity = "http://www.jornaldopovo.com.br/flip/edicoes/"+$stateParams.
 $scope.material = "http://www.jornaldopovo.com.br/flip/edicoes/"+$stateParams.chatId+"/edicao_completa.pdf";
   $scope.pdfUrl = $scope.material;
 
-  $scope.pdfGoogle =$sce.trustAsResourceUrl('https://docs.google.com/viewer?url=' + encodeURIComponent($scope.material));
+  $scope.pdfGoogle ='https://docs.google.com/viewer?url=' + encodeURIComponent($scope.material);
 
 
 var edicoespgs = new Array();
