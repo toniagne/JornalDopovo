@@ -53,7 +53,7 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'ngCookies'])
 
 })
 
-.controller('ChatsCtrl', function($scope, Chats, $http, $state) {
+.controller('ChatsCtrl', function($scope, Chats, $http, $state, $ionicPopup) {
   $scope.placeholder1 = "VERSÃO IMPRESSA";
   $scope.versaoImpressa = function (){
       window.location.href = '#/tab/chats';
@@ -99,13 +99,37 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'ngCookies'])
    });
 
    $scope.openPDF = function(filename) {
+      $scope.data = {}
+     var myPopup = $ionicPopup.show({
+     template: 'Celular: <input type="text" ng-model="data.celular"> Senha: <input type="password" ng-model="data.senha">',
+     title: 'Área de assinantes',
+     subTitle: 'Para ter acesso à versão impressa você deve ter uma assinatura.',
+     scope: $scope,
+     buttons: [
+       { text: 'Cancelar' },
+       {
+         text: '<b>Acessar</b>',
+         type: 'button-positive',
+         onTap: function(e) {
+ 
+           if (!$scope.data.celular) {
+            console.log('deu erro')
+             e.preventDefault();
+           } else {
+             console.log(filename);
+             var res = filename.split("-");
+             var data = res[0]+res[1]+res[2];
+             uri = "http://www.jornaldopovo.com.br/flip/edicoes/"+data+"/edicao_completa.pdf";
+             link = "http://docs.google.com/viewer?url=" +  encodeURIComponent(uri) + "&embedded=true";
+             window.open(link, "_blank", "location=no,toolbar=no,hardwareback=yes");
+           }
+         }
+       },
+     ]
+   });
 
 
-     var res = filename.split("-");
-     var data = res[0]+res[1]+res[2];
-     uri = "http://www.jornaldopovo.com.br/flip/edicoes/"+data+"/edicao_completa.pdf"; 
-     link = "http://docs.google.com/viewer?url=" +  encodeURIComponent(uri) + "&embedded=true";
-     window.open(link, "_blank", "location=no,toolbar=no,hardwareback=yes");
+
 
 
    }
