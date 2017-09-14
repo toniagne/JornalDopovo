@@ -53,7 +53,7 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'ngCookies'])
 
 })
 
-.controller('ChatsCtrl', function($scope, Chats, $http, $state, $ionicPopup) {
+.controller('ChatsCtrl', function($scope, Chats, $http, $state, $ionicPopup, Usuario) {
   $scope.placeholder1 = "VERSÃO IMPRESSA";
   $scope.versaoImpressa = function (){
       window.location.href = '#/tab/chats';
@@ -99,9 +99,13 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'ngCookies'])
    });
 
    $scope.openPDF = function(filename) {
-      $scope.data = {}
+    $scope.dadosuser = Usuario.list(); 
+
+
+    if ($scope.dadosuser == "") {
+      $scope.input = {}
      var myPopup = $ionicPopup.show({
-     template: 'Celular: <input type="text" ng-model="data.celular"> Senha: <input type="password" ng-model="data.senha">',
+     template: 'Celular: <input type="text" ng-model="input.celular"> Senha: <input type="password" ng-model="input.senha">',
      title: 'Área de assinantes',
      subTitle: 'Para ter acesso à versão impressa você deve ter uma assinatura.',
      scope: $scope,
@@ -112,23 +116,75 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'ngCookies'])
          type: 'button-positive',
          onTap: function(e) {
  
-           if (!$scope.data.celular) {
-            console.log('deu erro')
-             e.preventDefault();
+           if (!$scope.input.celular) {
+               $ionicPopup.alert({
+                     title: 'Aviso',
+                     content: 'Você precisa preencher os campos CELULAR e SENHA'
+                   });
+              e.preventDefault();
            } else {
-             console.log(filename);
+             
+
+            var url =  'http://www.jornaldopovo.com.br/jpApp/fazLogin.php?callback=JSON_CALLBACK'+
+            '&celular='+$scope.input.celular +
+            '&senha='+$scope.input.senha;
+
+            $http.jsonp(url).
+             success(function(data, status, headers, config) {
+
+                  if (data.assinante == 2){
+                    Usuario.list(data.nomeUsuario);
+                    Usuario.add(data.nomeUsuario); 
+
+                      var res = filename.split("-");
+                      var data = res[0]+res[1]+res[2];
+                      uri = "http://www.jornaldopovo.com.br/flip/edicoes/"+data+"/edicao_completa.pdf";
+                      link = "http://docs.google.com/viewer?url=" +  encodeURIComponent(uri) + "&embedded=true";
+                      window.open(link, "_blank", "location=no,toolbar=no,hardwareback=yes");
+                  }
+                  else if (data.assinante == 3){
+                    Usuario.add(data.nomeUsuario); 
+
+                      var res = filename.split("-");
+                      var data = res[0]+res[1]+res[2];
+                      uri = "http://www.jornaldopovo.com.br/flip/edicoes/"+data+"/edicao_completa.pdf";
+                      link = "http://docs.google.com/viewer?url=" +  encodeURIComponent(uri) + "&embedded=true";
+                      window.open(link, "_blank", "location=no,toolbar=no,hardwareback=yes");
+                  }
+                  else {
+                      $ionicPopup.alert({
+                     title: 'Aviso',
+                     content: 'Seu CELULAR ou SENHA estão erradas ou foram digitados incorretamente, tente novamente'
+                   });
+                  }
+             }).
+             error(function(data, status, headers, config) {
+                $ionicPopup.alert({
+                     title: 'Aviso',
+                     content: 'Você esta sem conexão com a internet.'
+                   });
+             });
+            /*
              var res = filename.split("-");
              var data = res[0]+res[1]+res[2];
              uri = "http://www.jornaldopovo.com.br/flip/edicoes/"+data+"/edicao_completa.pdf";
              link = "http://docs.google.com/viewer?url=" +  encodeURIComponent(uri) + "&embedded=true";
              window.open(link, "_blank", "location=no,toolbar=no,hardwareback=yes");
+             */
+
            }
          }
        },
      ]
    });
 
-
+   } else {
+            var res = filename.split("-");
+             var data = res[0]+res[1]+res[2];
+             uri = "http://www.jornaldopovo.com.br/flip/edicoes/"+data+"/edicao_completa.pdf";
+             link = "http://docs.google.com/viewer?url=" +  encodeURIComponent(uri) + "&embedded=true";
+             window.open(link, "_blank", "location=no,toolbar=no,hardwareback=yes");
+   }
 
 
 
@@ -251,8 +307,7 @@ $scope.trustSrc = function(src) {
 
 
   var url =  'http://www.jornaldopovo.com.br/guiafoneApp/edicoes.php?callback=JSON_CALLBACK&titulo='+$stateParams.chatId;
-
-   $http.jsonp(url).
+  $http.jsonp(url).
    success(function(data, status, headers, config) {
        $scope.iframeURLassinatura = "http://www.jornaldopovo.com.br/mobile/site/noticias_interna.php?intIdConteudo="+data.idedicao;
       console.log(data);
