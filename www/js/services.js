@@ -14,6 +14,36 @@ angular.module('starter.services', [])
     return itemsService;
 })
 
+.factory('Cache',function(CacheFactory){
+
+  return {
+
+    logIn : function(info){
+      //userCache = CacheFactory.get('userCache');
+
+      //if(userCache) CacheFactory.destroy('userCache'); 
+      userCache = CacheFactory.createCache('userCache',{storageMode:"localStorage"});
+      userCache.put('user', info);
+      return userCache;
+    },
+    checkLogIn : function(){
+      var r = CacheFactory.get('userCache');
+      return r;
+    },
+    logOut : function() {
+      var userCache = CacheFactory.get('userCache');
+
+      if(userCache == undefined){
+        userCache = CacheFactory('userCache',{storageMode:"localStorage"});
+      }
+
+      userCache.destroy();
+
+      return userCache;
+    }
+  }
+})
+
 .factory('Chats', function() {
   // Might use a resource here that returns a JSON array
 

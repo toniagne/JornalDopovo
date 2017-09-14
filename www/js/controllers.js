@@ -1,4 +1,4 @@
-angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'ngCookies'])
+angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'angular-cache'])
 
 .controller('DashCtrl', function($scope, $window, $sce, $timeout, $ionicLoading, $state, $stateParams) {
 
@@ -53,7 +53,11 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'ngCookies'])
 
 })
 
-.controller('ChatsCtrl', function($scope, Chats, $http, $state, $ionicPopup, Usuario) {
+.controller('ChatsCtrl', function($scope, Chats, $http, $state, $ionicPopup, Usuario, Cache) {
+ 
+  console.log(Cache.checkLogIn());
+
+
   $scope.placeholder1 = "VERSÃO IMPRESSA";
   $scope.versaoImpressa = function (){
       window.location.href = '#/tab/chats';
@@ -105,56 +109,115 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'ngCookies'])
     if ($scope.dadosuser == "") {
       $scope.input = {}
      var myPopup = $ionicPopup.show({
-     template: 'Celular: <input type="text" ng-model="input.celular"> Senha: <input type="password" ng-model="input.senha">',
+     template: 'E-mail: <input type="text" ng-model="input.email"> Senha: <input type="password" ng-model="input.senha">',
      title: 'Área de assinantes',
-     subTitle: 'Para ter acesso à versão impressa você deve ter uma assinatura.',
+     subTitle: 'Faça o seu login, informando seus dados de acesso no formulário abaixo:',
      scope: $scope,
      buttons: [
        { text: 'Cancelar' },
        {
-         text: '<b>Acessar</b>',
+         text: '<b>Próximo</b>',
          type: 'button-positive',
          onTap: function(e) {
  
-           if (!$scope.input.celular) {
+           if (!$scope.input.email) {
                $ionicPopup.alert({
                      title: 'Aviso',
-                     content: 'Você precisa preencher os campos CELULAR e SENHA'
+                     content: 'Você precisa preencher os campos E-MAIL e SENHA'
                    });
               e.preventDefault();
            } else {
              
 
             var url =  'http://www.jornaldopovo.com.br/jpApp/fazLogin.php?callback=JSON_CALLBACK'+
-            '&celular='+$scope.input.celular +
+            '&email='+$scope.input.email +
             '&senha='+$scope.input.senha;
 
             $http.jsonp(url).
              success(function(data, status, headers, config) {
 
-                  if (data.assinante == 2){
-                    Usuario.list(data.nomeUsuario);
-                    Usuario.add(data.nomeUsuario); 
+                  if (data.assinante == 2 || data.assinante == 3 || data.assinante == 4){
 
-                      var res = filename.split("-");
-                      var data = res[0]+res[1]+res[2];
-                      uri = "http://www.jornaldopovo.com.br/flip/edicoes/"+data+"/edicao_completa.pdf";
-                      link = "http://docs.google.com/viewer?url=" +  encodeURIComponent(uri) + "&embedded=true";
-                      window.open(link, "_blank", "location=no,toolbar=no,hardwareback=yes");
-                  }
-                  else if (data.assinante == 3){
-                    Usuario.add(data.nomeUsuario); 
+                    $ionicPopup.show({
+                         template: 'Telefone: <input type="text" ng-model="input.telefone">',
+                         title: 'Validação de usuário',
+                         subTitle: 'Para completar o processo de login, preencha a informação abaixo corretamente:',
+                         scope: $scope,
+                         buttons: [
+                           { text: 'Cancelar' },
+                           {
+                             text: '<b>Acessar</b>',
+                             type: 'button-positive',
+                             onTap: function(e) {
+                     
+                               if (!$scope.input.telefone) {
+                                   $ionicPopup.alert({
+                                         title: 'Aviso',
+                                         content: 'Você precisa preencher o campo TELEFONE'
+                                       });
+                                  e.preventDefault();
+                               } else {
+                                 
 
-                      var res = filename.split("-");
-                      var data = res[0]+res[1]+res[2];
-                      uri = "http://www.jornaldopovo.com.br/flip/edicoes/"+data+"/edicao_completa.pdf";
-                      link = "http://docs.google.com/viewer?url=" +  encodeURIComponent(uri) + "&embedded=true";
-                      window.open(link, "_blank", "location=no,toolbar=no,hardwareback=yes");
-                  }
+                                var url =  'http://www.jornaldopovo.com.br/jpApp/fazLogin2.php?callback=JSON_CALLBACK'+
+                                '&telefone='+$scope.input.telefone;
+
+                                $http.jsonp(url).
+                                 success(function(data, status, headers, config) {
+                                   console.log(data.assinante);
+                                  /*
+                                      if (data.assinante == 2){
+                                        Usuario.list(data.nomeUsuario);
+                                        Usuario.add(data.nomeUsuario); 
+
+                                          var res = filename.split("-");
+                                          var data = res[0]+res[1]+res[2];
+                                          uri = "http://www.jornaldopovo.com.br/flip/edicoes/"+data+"/edicao_completa.pdf";
+                                          link = "http://docs.google.com/viewer?url=" +  encodeURIComponent(uri) + "&embedded=true";
+                                          window.open(link, "_blank", "location=no,toolbar=no,hardwareback=yes");
+                                      }
+                                      else if (data.assinante == 3){
+                                        Usuario.add(data.nomeUsuario); 
+
+                                          var res = filename.split("-");
+                                          var data = res[0]+res[1]+res[2];
+                                          uri = "http://www.jornaldopovo.com.br/flip/edicoes/"+data+"/edicao_completa.pdf";
+                                          link = "http://docs.google.com/viewer?url=" +  encodeURIComponent(uri) + "&embedded=true";
+                                          window.open(link, "_blank", "location=no,toolbar=no,hardwareback=yes");
+                                      }
+                                      else {
+                                          $ionicPopup.alert({
+                                         title: 'Aviso',
+                                         content: 'Seu CELULAR ou SENHA estão erradas ou foram digitados incorretamente, tente novamente'
+                                       });
+                                      }
+                                      */
+                                 }).
+                                 error(function(data, status, headers, config) {
+                                    $ionicPopup.alert({
+                                         title: 'Aviso',
+                                         content: 'Você esta sem conexão com a internet.'
+                                       });
+                                 });
+                                /*
+                                 var res = filename.split("-");
+                                 var data = res[0]+res[1]+res[2];
+                                 uri = "http://www.jornaldopovo.com.br/flip/edicoes/"+data+"/edicao_completa.pdf";
+                                 link = "http://docs.google.com/viewer?url=" +  encodeURIComponent(uri) + "&embedded=true";
+                                 window.open(link, "_blank", "location=no,toolbar=no,hardwareback=yes");
+                                 */
+
+                               }
+                             }
+                           },
+                         ]
+                       });
+                    
+                  } 
                   else {
                       $ionicPopup.alert({
                      title: 'Aviso',
-                     content: 'Seu CELULAR ou SENHA estão erradas ou foram digitados incorretamente, tente novamente'
+                     content: 'Seu E-MAIL ou SENHA estão errados ou foram digitados incorretamente, tente novamente'
                    });
                   }
              }).
