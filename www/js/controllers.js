@@ -137,9 +137,18 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'angular-cach
              success(function(data, status, headers, config) {
 
                   if (data.assinante == 2 || data.assinante == 3 || data.assinante == 4){
+                    var r_text = new Array ();
+                    var r_text2 = new Array ();
+                    var r_text3 = new Array ();
 
+                    r_text[0] = "Telefone";           r_text2[0] = "strFone";                 r_text3[0] = "tel"; 
+                    r_text[1] = "E-mail";             r_text2[1] = "strEmail";                r_text3[0] = "text"; 
+                    r_text[2] = "Data de Nascimento (ex: 31-12-2017)"; r_text2[2] = "dteDataNascimento";  r_text3[0] = "tel"; 
+
+                    var i = Math.floor(3*Math.random())
+                    $scope.camposel = r_text2[i]; 
                     $ionicPopup.show({
-                         template: 'Telefone: <input type="text" ng-model="input.telefone">',
+                         template: ' '+r_text[i]+': <input type="'+r_text3[i]+'" ng-model="input.'+r_text2[i]+'">',
                          title: 'Validação de usuário',
                          subTitle: 'Para completar o processo de login, preencha a informação abaixo corretamente:',
                          scope: $scope,
@@ -150,23 +159,25 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'angular-cach
                              type: 'button-positive',
                              onTap: function(e) {
                      
-                               if (!$scope.input.telefone) {
+                               if (!$scope.input) {
                                    $ionicPopup.alert({
                                          title: 'Aviso',
-                                         content: 'Você precisa preencher o campo TELEFONE'
+                                         content: 'Você precisa preencher o campo '+r_text3[i]
                                        });
                                   e.preventDefault();
                                } else {
-                                 
+                                 console.log($scope.input[$scope.camposel]);
 
                                 var url =  'http://www.jornaldopovo.com.br/jpApp/fazLogin2.php?callback=JSON_CALLBACK'+
-                                '&telefone='+$scope.input.telefone;
+                                '&item='+$scope.input[$scope.camposel]+
+                                '&senha='+$scope.input.senha+
+                                '&campo='+$scope.camposel;
 
                                 $http.jsonp(url).
                                  success(function(data, status, headers, config) {
                                    console.log(data.assinante);
                                   /*
-                                      if (data.assinante == 2){
+                                      if (data.assinante == 2 || data.assinante == 3 || data.assinante == 4) {
                                         Usuario.list(data.nomeUsuario);
                                         Usuario.add(data.nomeUsuario); 
 
@@ -176,15 +187,7 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'angular-cach
                                           link = "http://docs.google.com/viewer?url=" +  encodeURIComponent(uri) + "&embedded=true";
                                           window.open(link, "_blank", "location=no,toolbar=no,hardwareback=yes");
                                       }
-                                      else if (data.assinante == 3){
-                                        Usuario.add(data.nomeUsuario); 
-
-                                          var res = filename.split("-");
-                                          var data = res[0]+res[1]+res[2];
-                                          uri = "http://www.jornaldopovo.com.br/flip/edicoes/"+data+"/edicao_completa.pdf";
-                                          link = "http://docs.google.com/viewer?url=" +  encodeURIComponent(uri) + "&embedded=true";
-                                          window.open(link, "_blank", "location=no,toolbar=no,hardwareback=yes");
-                                      }
+                                      
                                       else {
                                           $ionicPopup.alert({
                                          title: 'Aviso',
@@ -312,7 +315,7 @@ $scope.trustSrc = function(src) {
   $scope.trustSrc = function(src) {
       return $sce.trustAsResourceUrl(src);
   }
-  $scope.iframeURLassinatura = "http://www.jornaldopovo.com.br/site/assinar.php";
+  $scope.iframeURLassinatura = "http://www.jornaldopovo.com.br/jpApp/assinar.html";
 })
 
 .controller('ContatoCtrl', function($scope, $sce, $stateParams, $state, $http, $ionicPopup) {
