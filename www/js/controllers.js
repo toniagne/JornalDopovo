@@ -147,6 +147,7 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'angular-cach
 
                     var i = Math.floor(3*Math.random())
                     $scope.camposel = r_text2[i]; 
+                    $scope.titulosel=r_text[i];
                     $ionicPopup.show({
                          template: ' '+r_text[i]+': <input type="'+r_text3[i]+'" ng-model="input.'+r_text2[i]+'">',
                          title: 'Validação de usuário',
@@ -175,8 +176,7 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'angular-cach
 
                                 $http.jsonp(url).
                                  success(function(data, status, headers, config) {
-                                   console.log(data.assinante);
-                                  /*
+                                   
                                       if (data.assinante == 2 || data.assinante == 3 || data.assinante == 4) {
                                         Usuario.list(data.nomeUsuario);
                                         Usuario.add(data.nomeUsuario); 
@@ -191,10 +191,10 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'angular-cach
                                       else {
                                           $ionicPopup.alert({
                                          title: 'Aviso',
-                                         content: 'Seu CELULAR ou SENHA estão erradas ou foram digitados incorretamente, tente novamente'
+                                         content: $scope.titulosel+' foi digitado incorretamente, tente novamente'
                                        });
                                       }
-                                      */
+                                      
                                  }).
                                  error(function(data, status, headers, config) {
                                     $ionicPopup.alert({
