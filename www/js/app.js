@@ -12,8 +12,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 $ionicPlatform.registerBackButtonAction(function(event) {
     if (true) { // your check here
       return window.history.back();
+    }
   }, 100);
-});
+
 
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
