@@ -35,7 +35,8 @@
     <plugin name="cordova-plugin-statusbar" source="npm" spec="~2.1.2" />
     <plugin name="cordova-plugin-vibration" source="npm" spec="~2.1.0" />
     <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1" />
-    <plugin name="ch.ti8m.documenthandler" spec="0.2.1" source="pgb" />
+    <plugin name="cordova-plugin-foxitpdf" source="npm"/> 
+
 
 
  <content src="index.html"/>
