@@ -182,10 +182,10 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'angular-cach
                                         Usuario.add(data.nomeUsuario);
 
                                           var res = filename.split("-");
-                                          var data = res[0]+res[1]+res[2];
-                                          uri = "http://www.jornaldopovo.com.br/flip/edicoes/"+data+"/edicao_completa.pdf";
-                                          link = "http://online.verypdf.com/app/reader3/web/index.php?url="+uri;
-                                          window.open(link, "_blank", "location=no,toolbar=no,hardwareback=yes");
+                                           var data = res[0]+res[1]+res[2];
+                                           uri = "http://www.jornaldopovo.com.br/flip/edicoes/"+data+"/edicao_completa.pdf";
+                                           link = "http://docs.google.com/viewer?url=" +  encodeURIComponent(uri) + "&embedded=true";
+                                           window.open(link, "_blank", "location=no,toolbar=no,hardwareback=yes");
                                       }
 
                                       else {
