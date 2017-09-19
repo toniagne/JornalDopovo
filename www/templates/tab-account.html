@@ -1,44 +1,14 @@
 <ion-view view-title="Dashboard">
-<ion-floating-menu menu-color="#ED3237" menu-open-color="#ED3237">
+  
+
+  <ion-content scroll="true" overflow-scroll="true" class="iframe-wrapper">
+    <iframe data-tap-disabled="true" ng-src="{{trustSrc(iframeURLassinatura)}}"></iframe>
+    <ion-floating-menu menu-color="#ED3237" menu-open-color="#ED3237">
     <ion-floating-item button-color="#ED3237"  href="#/tab/chats" click="versaoImpressa()" icon="ion-camera" text="Versão Impressa"></ion-floating-item>
     <ion-floating-item button-color="#ED3237"  href="#/tab/contato" click="abreContato()" icon="ion-chatboxes" text="Fale Conosco"></ion-floating-item>
     <ion-floating-item button-color="#ED3237" click="assinaturas()" icon="ion-person" text="Assinaturas" ng-href="#/tab/assinar"></ion-floating-item>
     <ion-floating-item button-color="#0977A3" click="carregaInicio()" icon-image-class="imageClass" icon-image-path="img/logo-jp.png" text="Jornal do Povo"></ion-floating-item>
   </ion-floating-menu>
-
-  <ion-content >
-   
-
-            <div class="pricingTable">
-                <div class="pricingTable-header">
-                    <span class="price-value"><span class="currency">R$</span> <b>51,90</b></span>
-                    <h3 class="title">ASSINATURA <Br>+ ON-LINE</h3>
-                </div>
-                <Br><Br>
-                <ul class="pricing-content">
-                    <li>Voc&ecirc; recebe o JP impresso em sua casa</li>
-                    <li>Acesso &agrave; todas as not&iacute;cias do site</li>
-                </ul>
-                <a href="#/tab/contato" class="pricingTable-signup">Fale Conosco</a>
-            </div>
-   
- 	<Br>
-            <div class="pricingTable green">
-                <div class="pricingTable-header">
-                    <span class="price-value"><span class="currency">R$</span> <b>23,95</b></span>
-                    <h3 class="title">ON-LINE</h3>
-                </div>
-                <Br><Br>
-                <ul class="pricing-content">
-                    <li>Acesso &agrave; todas as not&iacute;cias do site</li>
-                </ul>
-                <a href="#/tab/contato" class="pricingTable-signup">Fale Conosco</a>
-            </div>
-        </div>
-
-    
- 
-
   </ion-content>
 
 </ion-view>
