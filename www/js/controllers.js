@@ -112,15 +112,14 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'angular-cach
       uri = "http://www.jornaldopovo.com.br/flip/edicoes/"+data+"/edicao_completa.pdf";
 
 
-      var success = function(data){
-      console.log(data);
-        }
-        var error = function(data){
-            console.log(data);
-        }
-        var filePath = "http://www.jornaldopovo.com.br/flip/edicoes/"+data+"/edicao_completa.pdf";
-        // var filePath = "/mnt/sdcard/getting_started_ios.pdf";
-        window.FoxitPdf.preview(filePath,success,error);
+      RadaeePDFPlugin.openFromAssets({
+                      url: uri,
+                      password: ''
+                  }, function(message) {
+                      console.log('Success: ' + message);
+                  }, function(err) {
+                      console.log('Failure: ' + err);
+                  });
 
    }
 
