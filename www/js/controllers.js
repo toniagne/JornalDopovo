@@ -1,6 +1,10 @@
 angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'angular-cache'])
 
-.controller('DashCtrl', function($scope, $window, $sce, $timeout, $ionicLoading, $state, $stateParams) {
+.controller('DashCtrl', function($scope, $window, $ionicPlatform, $sce, $timeout, $ionicLoading, $state, $stateParams) {
+
+   $ionicPlatform.onHardwareBackButton(function() {
+     return window.history.back();
+  });
 
     $ionicLoading.show({
       content: 'Loading',
@@ -315,7 +319,7 @@ $scope.trustSrc = function(src) {
   $scope.trustSrc = function(src) {
       return $sce.trustAsResourceUrl(src);
   }
-  $scope.iframeURLassinatura = "http://www.jornaldopovo.com.br/jpApp/assinar.html";
+  $scope.iframeURLassinatura = "http://www.jornaldopovo.com.br/site/assinar.php";
 })
 
 .controller('ContatoCtrl', function($scope, $sce, $stateParams, $state, $http, $ionicPopup) {
