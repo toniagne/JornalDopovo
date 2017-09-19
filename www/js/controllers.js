@@ -112,16 +112,7 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'angular-cach
       uri = "http://www.jornaldopovo.com.br/flip/edicoes/"+data+"/edicao_completa.pdf";
 
 
-      handleDocumentWithURL(
-        function() {console.log('success');},
-        function(error) {
-          console.log('failure');
-          if(error == 53) {
-            console.log('No app that handles this file type.');
-          }
-        },
-        uri
-      );
+      
 
    }
 

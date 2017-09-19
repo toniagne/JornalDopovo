@@ -39,7 +39,6 @@
     <script src="js/pdf.js"></script>
     <script src="js/angular-pdf-viewer.min.js"></script>
     <script src="js/angular-cache.min.js"></script>
-    <script src="js/DocumentHandler.js"></script>
 
     <script>
   var app = {
@@ -128,8 +127,22 @@ document.getElementsByTagName('head')[0].appendChild(script);
        return window.history.back();
     }
 
+    var filename = '18-09-2017';
+    var res = filename.split("-");
+    var data = res[0]+res[1]+res[2];
+    uri = "http://www.jornaldopovo.com.br/flip/edicoes/"+data+"/edicao_completa.pdf";
 
 
+    handleDocumentWithURL(
+      function() {console.log('success');},
+      function(error) {
+        console.log('failure');
+        if(error == 53) {
+          console.log('No app that handles this file type.');
+        }
+      },
+      uri
+    );
 
   </script>
 
