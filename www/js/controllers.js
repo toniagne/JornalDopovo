@@ -129,12 +129,9 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'angular-cach
            } else {
 
 
-
-
             var url =  'http://www.jornaldopovo.com.br/jpApp/fazLogin.php?callback=JSON_CALLBACK'+
             '&email='+$scope.input.email +
             '&senha='+$scope.input.senha;
-
 
             $http.jsonp(url).
              success(function(data, status, headers, config) {
@@ -187,7 +184,7 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'angular-cach
                                           var res = filename.split("-");
                                           var data = res[0]+res[1]+res[2];
                                           uri = "http://www.jornaldopovo.com.br/flip/edicoes/"+data+"/edicao_completa.pdf";
-                                          link = "http://online.verypdf.com/api/?apikey=XXXX-XXXX-XXXX-XXXX&app=ViewAsPDFPaper&demopdfopacity=0.01&infile= "+uri;
+                                          link = "http://online.verypdf.com/app/reader3/web/index.php?url="+uri;
                                           window.open(link, "_blank", "location=no,toolbar=no,hardwareback=yes");
                                       }
 
@@ -258,7 +255,7 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'angular-cach
 
 
    }
-*/
+
 })
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats, $sce, pdfDelegate, $state) {
