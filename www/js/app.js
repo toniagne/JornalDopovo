@@ -8,6 +8,13 @@
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 .run(function($ionicPlatform) {
+
+$ionicPlatform.registerBackButtonAction(function(event) {
+    if (true) { // your check here
+      return window.history.back();
+  }, 100);
+});
+
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -22,6 +29,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   });
 })
+
+
+  
+
 
 .config(['$httpProvider', function ($httpProvider) {
   $httpProvider.defaults.useXDomain = true;

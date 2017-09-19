@@ -1,11 +1,7 @@
 angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'angular-cache'])
 
-.controller('DashCtrl', function($scope, $window, $ionicPlatform, $sce, $timeout, $ionicLoading, $state, $stateParams) {
-
-   $ionicPlatform.onHardwareBackButton(function() {
-     return window.history.back();
-  });
-
+.controller('DashCtrl', function($scope, $window, $sce, $timeout, $ionicLoading, $state, $stateParams) {
+ 
     $ionicLoading.show({
       content: 'Loading',
       animation: 'fade-in',
