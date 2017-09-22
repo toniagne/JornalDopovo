@@ -183,9 +183,8 @@ console.log(window.localStorage);
                                         Cache.logIn(data.nomeUsuario);
                                           var res = filename.split("-");
                                            var data = res[0]+res[1]+res[2];
-                                           uri = "http://www.jornaldopovo.com.br/flip/edicoes/"+data+"/edicao_completa.pdf";
-                                           link = "http://docs.google.com/viewer?url=" +  encodeURIComponent(uri) + "&embedded=true";
-                                           window.open(link, "_blank", "location=no,toolbar=no,hardwareback=yes");
+                                           uri = "http://www.jornaldopovo.com.br/jpApp/pdfjp/?edicao="+data;
+                                           window.open(uri, "_blank", "location=no,toolbar=no,hardwareback=yes");
                                       }
 
                                       else {
@@ -247,9 +246,8 @@ console.log(window.localStorage);
    } else {
             var res = filename.split("-");
              var data = res[0]+res[1]+res[2];
-             uri = "http://www.jornaldopovo.com.br/flip/edicoes/"+data+"/edicao_completa.pdf";
-             link = "http://docs.google.com/viewer?url=" +  encodeURIComponent(uri) + "&embedded=true";
-             window.open(link, "_blank", "location=no,toolbar=no,hardwareback=yes");
+             uri = "http://www.jornaldopovo.com.br/jpApp/pdfjp/?edicao="+data;
+             window.open(uri, "_blank", "location=no,toolbar=no,hardwareback=yes");
    }
 
 
