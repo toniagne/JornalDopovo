@@ -21,9 +21,10 @@ angular.module('starter.services', [])
     logIn : function(info){
       //userCache = CacheFactory.get('userCache');
 
-      //if(userCache) CacheFactory.destroy('userCache'); 
+      //if(userCache) CacheFactory.destroy('userCache');
       userCache = CacheFactory.createCache('userCache',{storageMode:"localStorage"});
       userCache.put('user', info);
+      window.localStorage.setItem("user", info);
       return userCache;
     },
     checkLogIn : function(){

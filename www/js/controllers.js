@@ -1,7 +1,7 @@
 angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'angular-cache'])
 
 .controller('DashCtrl', function($scope, $window, $sce, $timeout, $ionicLoading, $state, $stateParams) {
- 
+
     $ionicLoading.show({
       content: 'Loading',
       animation: 'fade-in',
@@ -106,7 +106,7 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'angular-cach
     $scope.dadosuser = Usuario.list();
 
 
-    if ($scope.dadosuser == "") {
+    if (window.localStorage.getItem("user") == "") {
       $scope.input = {}
      var myPopup = $ionicPopup.show({
      template: 'E-mail: <input type="text" ng-model="input.email"> Senha: <input type="password" ng-model="input.senha">',
@@ -141,7 +141,7 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'angular-cach
                     var r_text2 = new Array ();
                     var r_text3 = new Array ();
 
-                    r_text[0] = "Telefone";           r_text2[0] = "strFone";                 r_text3[0] = "tel";
+                    r_text[0] = "Telefone Cadastrado";           r_text2[0] = "strFone";                 r_text3[0] = "tel";
                     r_text[1] = "E-mail";             r_text2[1] = "strEmail";                r_text3[0] = "text";
                     r_text[2] = "Data de Nascimento (ex: 31-12-2017)"; r_text2[2] = "dteDataNascimento";  r_text3[0] = "tel";
 
