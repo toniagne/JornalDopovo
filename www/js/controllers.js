@@ -55,7 +55,7 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'angular-cach
 
 .controller('ChatsCtrl', function($scope, Chats, $http, $state, $ionicPopup, Usuario, Cache) {
 
-  console.log(Cache.checkLogIn());
+
 
 
   $scope.placeholder1 = "VERSÃO IMPRESSA";
@@ -105,8 +105,8 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'angular-cach
    $scope.openPDF = function(filename) {
     $scope.dadosuser = Usuario.list();
 
-
-    if (window.localStorage.getItem("user") == "") {
+console.log(window.localStorage);
+    if (window.localStorage.getItem("user") == null || window.localStorage.getItem("user") == "" ) {
       $scope.input = {}
      var myPopup = $ionicPopup.show({
      template: 'E-mail: <input type="text" ng-model="input.email"> Senha: <input type="password" ng-model="input.senha">',
@@ -180,7 +180,7 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'angular-cach
                                       if (data.assinante == 2 || data.assinante == 3 || data.assinante == 4) {
                                         Usuario.list(data.nomeUsuario);
                                         Usuario.add(data.nomeUsuario);
-
+                                        Cache.logIn();
                                           var res = filename.split("-");
                                            var data = res[0]+res[1]+res[2];
                                            uri = "http://www.jornaldopovo.com.br/flip/edicoes/"+data+"/edicao_completa.pdf";
