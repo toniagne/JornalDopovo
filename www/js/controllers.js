@@ -58,7 +58,7 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'angular-cach
 
 
 
-  $scope.placeholder1 = "VERSÃO IMPRESSA";
+  $scope.placeholder1 = "EDIÇÕES ANTERIORES";
   $scope.versaoImpressa = function (){
       window.location.href = '#/tab/chats';
   }
@@ -136,7 +136,7 @@ console.log(window.localStorage);
             $http.jsonp(url).
              success(function(data, status, headers, config) {
 
-                  if (data.assinante == 2 || data.assinante == 3 || data.assinante == 4){
+                  if (data.assinante == 1 || data.assinante == 2 || data.assinante == 3 || data.assinante == 4){
                     var r_text = new Array ();
                     var r_text2 = new Array ();
                     var r_text3 = new Array ();
