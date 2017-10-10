@@ -108,16 +108,17 @@ angular.module('starter.controllers', ['ion-floating-menu', 'angular-cache', 'pd
  
 var url = "http://www.jornaldopovo.com.br/flip/edicoes/20171010/edicao_completa.pdf";
  return
- DocumentHandler.previewFileFromUrlOrPath(
+DocumentHandler.previewFileFromUrlOrPath(
     function () {
     console.log('success');
     }, function (error) {
     if (error == 53) {
-        console.log('No app that handles this file type.');
+        alert('No app that handles this file type.');
     }else if (error == 2){
-        console.log('Invalid link');
+        alert('Invalid link');
     }
-},url);
+},
+'http://www.axmag.com/download/pdfurl-guide.pdf', 'pdf-sample');
 
 
    }
