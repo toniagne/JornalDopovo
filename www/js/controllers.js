@@ -105,12 +105,21 @@ angular.module('starter.controllers', ['ion-floating-menu', 'angular-cache', 'pd
 
    $scope.openPDF = function(filename) {
 
-   var res = filename.split("-");
+      var res = filename.split("-");
              var data = res[0]+res[1]+res[2];
              uri = "http://www.jornaldopovo.com.br/flip/edicoes/"+data+"/edicao_completa.pdf";
 
  
-    window.plugins.fileOpener.open(uri);
+    var onSuccess = function(data) {
+    alert('extension: ' + data.extension + '\n' +
+          'canBeOpen: ' + data.canBeOpen);
+};
+ 
+function onError(error) {
+    alert('message: '  + error.message);
+}
+ 
+window.cordova.plugins.FileOpener.canOpenFile(uri, onSuccess, onError);
    }
 
 })
