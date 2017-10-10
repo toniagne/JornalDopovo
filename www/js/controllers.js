@@ -109,35 +109,8 @@ angular.module('starter.controllers', ['ion-floating-menu', 'angular-cache', 'pd
              var data = res[0]+res[1]+res[2];
              uri = "http://www.jornaldopovo.com.br/flip/edicoes/"+data+"/edicao_completa.pdf";
 
-
-cordova.plugins.SitewaertsDocumentViewer.canViewDocument(
-    uri, 'application/pdf', options, onPossible, onMissingApp, onImpossible, onError);
-
-function onPossible(){
-  window.console.log('document can be shown');
-  //e.g. track document usage
-}
-
-function onMissingApp(appId, installer)
-{
-    if(confirm("Do you want to install the free PDF Viewer App "
-            + appId + " for Android?"))
-    {
-        installer();
-    }
-}
-
-function onImpossible(){
-  window.console.log('document cannot be shown');
-  //e.g. track document usage
-}
-
-function onError(error){
-  window.console.log(error);
-  alert("Sorry! Cannot show document." + error);
-}
-
-
+ 
+    window.plugins.fileOpener.open(uri);
    }
 
 })
