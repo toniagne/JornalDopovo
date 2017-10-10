@@ -104,10 +104,11 @@ angular.module('starter.controllers', ['ion-floating-menu', 'angular-cache', 'pd
    });
 
    $scope.openPDF = function(filename) {
-    $scope.dadosuser = Usuario.list();
+    
+    console.log('teste');
  
 var url = "http://www.jornaldopovo.com.br/flip/edicoes/20171010/edicao_completa.pdf";
- return
+ 
 DocumentHandler.previewFileFromUrlOrPath(
     function () {
     console.log('success');
