@@ -109,18 +109,21 @@ angular.module('starter.controllers', ['ion-floating-menu', 'angular-cache', 'pd
              var data = res[0]+res[1]+res[2];
              uri = "http://www.jornaldopovo.com.br/flip/edicoes/"+data+"/edicao_completa.pdf";
 
- 
-    var onSuccess = function(data) {
+  var options = { 
+                headerColor:"#000000",
+                showScroll:true, 
+                showShareButton:false, 
+                showCloseButton:true, 
+                swipeHorizontal:false 
+              };
+              
+AndroidNativePdfViewer.openPdfUrl(uri, 'edicao', options, 
+                        function(success){
+                        // success callback
+                        },function(error){
+                          alert(error);
+                        });
      
-
-
-};
- 
-function onError(error) {
-    alert('message: '  + error.message);
-}
-  
-window.cordova.plugins.FileOpener.openFile(uri, onSuccess, onError);
    }
 
 })
