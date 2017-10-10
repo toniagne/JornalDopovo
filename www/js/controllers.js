@@ -109,18 +109,17 @@ angular.module('starter.controllers', ['ion-floating-menu', 'angular-cache', 'pd
              var data = res[0]+res[1]+res[2];
              uri = "http://www.jornaldopovo.com.br/flip/edicoes/"+data+"/edicao_completa.pdf";
 
-  var success = function(data){
-        console.log(data);
-    }
-    var error = function(data){
-        console.log(data);
-    }
-
-    var filePath = 'file://path/to/your/file';
-    //var filePath = cordova.file.applicationDirectory + 'Sample.pdf';
-    window.FoxitPdf.preview(uri,success,error);
-     
-   }
+  RadaeePDFPlugin.openFromAssets(
+  {
+    url: uri, //the pdf name
+    password: "" //password if needed
+  },
+  function(message) {
+     console.log("Success: " + message);
+  },
+  function(err){
+    console.log("Failure: " + err);
+    });
 
 })
 
