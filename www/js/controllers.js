@@ -111,15 +111,16 @@ angular.module('starter.controllers', ['ion-floating-menu', 'angular-cache', 'pd
 
  
     var onSuccess = function(data) {
-    alert('extension: ' + data.extension + '\n' +
-          'canBeOpen: ' + data.canBeOpen);
+     
+
+
 };
  
 function onError(error) {
     alert('message: '  + error.message);
 }
- 
-window.cordova.plugins.FileOpener.canOpenFile(uri, onSuccess, onError);
+  
+window.cordova.plugins.FileOpener.openFile(uri, onSuccess, onError);
    }
 
 })
