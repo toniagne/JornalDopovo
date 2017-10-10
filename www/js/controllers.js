@@ -105,63 +105,19 @@ angular.module('starter.controllers', ['ion-floating-menu', 'angular-cache', 'pd
 
    $scope.openPDF = function(filename) {
     $scope.dadosuser = Usuario.list();
-
-      var options = {
-  title: STRING,
-  documentView : {
-    closeLabel : STRING
-  },
-  navigationView : {
-    closeLabel : STRING
-  },
-  email : {
-    enabled : BOOLEAN
-  },
-  print : {
-    enabled : BOOLEAN
-  },
-  openWith : {
-    enabled : BOOLEAN
-  },
-  bookmarks : {
-    enabled : BOOLEAN
-  },
-  search : {
-    enabled : BOOLEAN
-  },
-  autoClose: {
-    onPause : BOOLEAN
-  }
-}
+ 
 var url = "http://www.jornaldopovo.com.br/flip/edicoes/20171010/edicao_completa.pdf";
-
-return 
-cordova.plugins.SitewaertsDocumentViewer.canViewDocument(
-    url, contentType, options, onPossible, onMissingApp, onImpossible, onError);
-
-function onPossible(){
-  window.console.log('document can be shown');
-  //e.g. track document usage
-}
-
-function onMissingApp(appId, installer)
-{
-    if(confirm("Do you want to install the free PDF Viewer App "
-            + appId + " for Android?"))
-    {
-        installer();
+ return
+ DocumentHandler.previewFileFromUrlOrPath(
+    function () {
+    console.log('success');
+    }, function (error) {
+    if (error == 53) {
+        console.log('No app that handles this file type.');
+    }else if (error == 2){
+        console.log('Invalid link');
     }
-}
-
-function onImpossible(){
-  window.console.log('document cannot be shown');
-  //e.g. track document usage
-}
-
-function onError(error){
-  window.console.log(error);
-  alert("Sorry! Cannot show document." + error);
-}
+},url);
 
 
    }
