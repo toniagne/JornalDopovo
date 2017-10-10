@@ -5,10 +5,9 @@
     <ion-floating-item button-color="#0977A3" click="carregaInicio()" icon-image-class="imageClass" icon-image-path="img/logo-jp.png" text="Jornal do Povo"></ion-floating-item>
   </ion-floating-menu>
   <ion-content>
+ 
 
-
-        <iframe ng-src="{{trustSrc(pdfGoogle)}}" target="_blank" style="width:100%; height: 100%;" type="application/pdf"></iframe>
-
+        <pdfjs-viewer src="{{ pdf.src }}"></pdfjs-viewer>
 
 
 

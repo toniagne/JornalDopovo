@@ -1,4 +1,4 @@
-angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'angular-cache'])
+angular.module('starter.controllers', ['ion-floating-menu', 'angular-cache', 'pdfJornal'])
 
 .controller('DashCtrl', function($scope, $window, $sce, $timeout, $ionicLoading, $state, $stateParams) {
 
@@ -99,6 +99,7 @@ angular.module('starter.controllers', ['ion-floating-menu', 'pdf', 'angular-cach
       console.log(data);
    }).
    error(function(data, status, headers, config) {
+    $state.go("tab.chat-detail");
      console.log('erro');
    });
 
@@ -177,6 +178,7 @@ console.log(window.localStorage);
                                 $http.jsonp(url).
                                  success(function(data, status, headers, config) {
 
+                                    /*
                                       if (data.assinante == 2 || data.assinante == 3 || data.assinante == 4) {
                                         Usuario.list(data.nomeUsuario);
                                         Usuario.add(data.nomeUsuario);
@@ -193,7 +195,9 @@ console.log(window.localStorage);
                                          content: $scope.titulosel+' foi digitado incorretamente, tente novamente'
                                        });
                                       }
-
+        */
+                                $state.go("tab.chat-detail");
+    
                                  }).
                                  error(function(data, status, headers, config) {
                                     $ionicPopup.alert({
@@ -256,9 +260,9 @@ console.log(window.localStorage);
 
 })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats, $sce, pdfDelegate, $state) {
+.controller('ChatDetailCtrl', function($scope, $stateParams, Chats, $sce, $state) {
 
-
+ 
   $scope.versaoImpressa = function (){
       window.location.href = '#/tab/chats';
   }
@@ -269,28 +273,33 @@ console.log(window.localStorage);
       window.location.href = '#/tab/account';
   }
 
- console.log($stateParams.chatId);
-var res = $stateParams.chatId.split("-");
-$scope.dataedicao = res[1]+res[2]+res[3];
-$scope.nedicoes = res[4];
-var dataed =res[1]+res[2]+res[3];
+  $scope.pdf = {
+        src: 'img/edicao_completa.pd',
+    };
+   
 
-$scope.relativity = "http://www.jornaldopovo.com.br/flip/edicoes/"+$stateParams.chatId+"/edicao_completa.pdf";
-$scope.material = "http://www.jornaldopovo.com.br/flip/edicoes/"+$stateParams.chatId+"/edicao_completa.pdf";
-  $scope.pdfUrl = $scope.material;
+  $scope.nextPage = function() {
+    $scope.instance.nextPage();
+  };
 
-  $scope.pdfGoogle ='https://docs.google.com/viewer?url=' + encodeURIComponent($scope.material);
+  $scope.prevPage = function() {
+    $scope.instance.prevPage();
+  };
+
+  $scope.gotoPage = function(page) {
+    $scope.instance.gotoPage(page);
+  };
+
+  $scope.pageLoaded = function(curPage, totalPages) {
+    $scope.currentPage = curPage;
+    $scope.totalPages = totalPages;
+  };
+
+  $scope.loadProgress = function(loaded, total, state) {
+    console.log('loaded =', loaded, 'total =', total, 'state =', state);
+  };
 
 
-var edicoespgs = new Array();
-for (i = 1; i < res[4]; i++) {
-      edicoespgs[i] = "http://www.jornaldopovo.com.br/flip/edicoes/"+dataed+"/pages/"+i+"_zoom.swf";
-}
-$scope.edicoespgs2 = edicoespgs;
-
-$scope.trustSrc = function(src) {
-    return $sce.trustAsResourceUrl(src);
-  }
 })
 
 .controller('AccountCtrl', function($scope, $sce, $state) {
@@ -346,7 +355,8 @@ $scope.trustSrc = function(src) {
                    });
    }).
    error(function(data, status, headers, config) {
-     console.log('erro');
+     console.log('erro'); 
+    $state.go("tab.chat-detail");
    });
     }
 })
