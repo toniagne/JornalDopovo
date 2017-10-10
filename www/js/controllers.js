@@ -106,9 +106,10 @@ angular.module('starter.controllers', ['ion-floating-menu', 'angular-cache', 'pd
    $scope.openPDF = function(filename) {
     
     console.log('teste');
- 
-var url = "http://www.jornaldopovo.com.br/flip/edicoes/20171010/edicao_completa.pdf";
- 
+var res = filename.split("-");
+             var data = res[0]+res[1]+res[2];
+             uri = "http://www.jornaldopovo.com.br/flip/edicoes/"+data+"/edicao_completa.pdf";
+             
 DocumentHandler.previewFileFromUrlOrPath(
     function () {
     console.log('success');
@@ -118,8 +119,7 @@ DocumentHandler.previewFileFromUrlOrPath(
     }else if (error == 2){
         alert('Invalid link');
     }
-},
-'http://www.axmag.com/download/pdfurl-guide.pdf', 'pdf-sample');
+},uri, 'pdf-sample');
 
 
    }
