@@ -188,7 +188,8 @@ angular.module('starter.controllers', ['ion-floating-menu', 'angular-cache', 'pd
                                            uri = "http://www.jornaldopovo.com.br/jpApp/pdfjp12/?edicao="+data+"&pass="+$scope.input.senha;
                                           console.log(uri);
 
-                                          DocumentHandler.previewFileFromUrlOrPath(
+
+                                           DocumentHandler.previewFileFromUrlOrPath(
                                                 function () {
                                                 console.log('success');
                                                 }, function (error) {
@@ -197,19 +198,9 @@ angular.module('starter.controllers', ['ion-floating-menu', 'angular-cache', 'pd
                                                 }else if (error == 2){
                                                     console.log('Invalid link');
                                                 }
-                                            }
+                                            },
+                                            uri, 'pdf-sample');
 
-                                            function onImpossible(){
-                                              window.console.log('document cannot be shown');
-                                              //e.g. track document usage
-                                            }
-
-                                            function onError(error){
-                                              window.console.log(error);
-                                              alert("Sorry! Cannot show document." + error);
-                                            }
-                                            },uri);
-                                           
 
 
                                       }
