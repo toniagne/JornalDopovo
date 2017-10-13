@@ -105,9 +105,8 @@ angular.module('starter.controllers', ['ion-floating-menu', 'angular-cache', 'pd
 
    $scope.openPDF = function(filename) {
 
-              var res = filename.split("-");
-             var data = res[0]+res[1]+res[2]; 
-
+              
+ if (window.localStorage.getItem("user") == null || window.localStorage.getItem("user") == "" ) {
  $scope.input = {}
   var myPopup = $ionicPopup.show({
      template: 'E-mail: <input type="text" ng-model="input.email"> Senha: <input type="password" ng-model="input.senha">',
@@ -182,7 +181,7 @@ angular.module('starter.controllers', ['ion-floating-menu', 'angular-cache', 'pd
                                       if (data.assinante == 2 || data.assinante == 3 || data.assinante == 4) {
                                         Usuario.list(data.nomeUsuario);
                                         Usuario.add(data.nomeUsuario);
-                                        Cache.logIn(data.nomeUsuario);
+                                        Cache.logIn($scope.input.senha);
                                           var res = filename.split("-");
                                            var data = res[0]+res[1]+res[2];
                                            uri = "http://www.jornaldopovo.com.br/jpApp/pdfjp12/?edicao="+data+"&pass="+$scope.input.senha;
@@ -201,7 +200,7 @@ angular.module('starter.controllers', ['ion-floating-menu', 'angular-cache', 'pd
                                             },
                                             uri, 'pdf-sample');
 
-
+                                          $state.go("tab.chat-detail");
 
                                       }
                                       else {
@@ -211,7 +210,7 @@ angular.module('starter.controllers', ['ion-floating-menu', 'angular-cache', 'pd
                                        });
                                       }
         
-                                $state.go("tab.chat-detail");
+                               
     
                                  }).
                                  error(function(data, status, headers, config) {
@@ -261,6 +260,28 @@ angular.module('starter.controllers', ['ion-floating-menu', 'angular-cache', 'pd
        },
      ]
 });
+
+} else {
+    var res = filename.split("-");
+                                           var data = res[0]+res[1]+res[2];
+                                           uri = "http://www.jornaldopovo.com.br/jpApp/pdfjp12/?edicao="+data+"&pass="+window.localStorage.getItem("user");
+                                          console.log(uri);
+
+
+                                           DocumentHandler.previewFileFromUrlOrPath(
+                                                function () {
+                                                console.log('success');
+                                                }, function (error) {
+                                                if (error == 53) {
+                                                    console.log('No app that handles this file type.');
+                                                }else if (error == 2){
+                                                    console.log('Invalid link');
+                                                }
+                                            },
+                                            uri, 'pdf-sample');
+
+                                          $state.go("tab.chat-detail");
+}
 
 }
  
