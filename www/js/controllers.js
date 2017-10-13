@@ -105,22 +105,161 @@ angular.module('starter.controllers', ['ion-floating-menu', 'angular-cache', 'pd
 
    $scope.openPDF = function(filename) {
 
-      var res = filename.split("-");
+              var res = filename.split("-");
+             var data = res[0]+res[1]+res[2]; 
+             
+ $scope.input = {}
+  var myPopup = $ionicPopup.show({
+     template: 'E-mail: <input type="text" ng-model="input.email"> Senha: <input type="password" ng-model="input.senha">',
+     title: 'Área de assinantes',
+     subTitle: 'Faça o seu login, informando seus dados de acesso no formulário abaixo:',
+     scope: $scope,
+     buttons: [
+       { text: 'Cancelar' },
+       {
+         text: '<b>Próximo</b>',
+         type: 'button-positive',
+         onTap: function(e) {
+
+           if (!$scope.input.email) {
+               $ionicPopup.alert({
+                     title: 'Aviso',
+                     content: 'Você precisa preencher os campos E-MAIL e SENHA'
+                   });
+              e.preventDefault();
+           } else {
+
+
+            var url =  'http://www.jornaldopovo.com.br/jpApp/fazLogin.php?callback=JSON_CALLBACK'+
+            '&email='+$scope.input.email +
+            '&senha='+$scope.input.senha;
+
+            $http.jsonp(url).
+             success(function(data, status, headers, config) {
+
+                  if (data.assinante == 1 || data.assinante == 2 || data.assinante == 3 || data.assinante == 4){
+                    var r_text = new Array ();
+                    var r_text2 = new Array ();
+                    var r_text3 = new Array ();
+
+                    r_text[0] = "Telefone Cadastrado";           r_text2[0] = "strFone";                 r_text3[0] = "tel";
+                    r_text[1] = "E-mail";             r_text2[1] = "strEmail";                r_text3[0] = "text";
+                    r_text[2] = "Data de Nascimento (ex: 31-12-2017)"; r_text2[2] = "dteDataNascimento";  r_text3[0] = "tel";
+
+                    var i = Math.floor(3*Math.random())
+                    $scope.camposel = r_text2[i];
+                    $scope.titulosel=r_text[i];
+                    $ionicPopup.show({
+                         template: ' '+r_text[i]+': <input type="'+r_text3[i]+'" ng-model="input.'+r_text2[i]+'">',
+                         title: 'Validação de usuário',
+                         subTitle: 'Para completar o processo de login, preencha a informação abaixo corretamente:',
+                         scope: $scope,
+                         buttons: [
+                           { text: 'Cancelar' },
+                           {
+                             text: '<b>Acessar</b>',
+                             type: 'button-positive',
+                             onTap: function(e) {
+
+                               if (!$scope.input) {
+                                   $ionicPopup.alert({
+                                         title: 'Aviso',
+                                         content: 'Você precisa preencher o campo '+r_text3[i]
+                                       });
+                                  e.preventDefault();
+                               } else {
+                                 console.log($scope.input[$scope.camposel]);
+
+                                var url =  'http://www.jornaldopovo.com.br/jpApp/fazLogin2.php?callback=JSON_CALLBACK'+
+                                '&item='+$scope.input[$scope.camposel]+
+                                '&senha='+$scope.input.senha+
+                                '&campo='+$scope.camposel;
+
+                                $http.jsonp(url).
+                                 success(function(data, status, headers, config) {
+
+                                     
+                                      if (data.assinante == 2 || data.assinante == 3 || data.assinante == 4) {
+                                        Usuario.list(data.nomeUsuario);
+                                        Usuario.add(data.nomeUsuario);
+                                        Cache.logIn(data.nomeUsuario);
+                                          var res = filename.split("-");
+                                           var data = res[0]+res[1]+res[2];
+                                           uri = "http://www.jornaldopovo.com.br/jpApp/pdfjp12/?edicao="+data+"&pass="+$scope.input.senha;
+                                          console.log(uri);
+                                           handleDocumentWithURL(
+                                            function() {console.log('success');},
+                                            function(error) {
+                                              console.log('failure');
+                                              if(error == 53) {
+                                                console.log('No app that handles this file type.');
+                                              }
+                                            }, 
+                                            uri
+                                          );
+
+
+                                      }
+                                      else {
+                                          $ionicPopup.alert({
+                                         title: 'Aviso',
+                                         content: $scope.titulosel+' foi digitado incorretamente, tente novamente'
+                                       });
+                                      }
+        
+                                $state.go("tab.chat-detail");
+    
+                                 }).
+                                 error(function(data, status, headers, config) {
+                                    $ionicPopup.alert({
+                                         title: 'Aviso',
+                                         content: 'Você esta sem conexão com a internet.'
+                                       });
+                                 });
+                                /*
+                                 var res = filename.split("-");
+                                 var data = res[0]+res[1]+res[2];
+                                 uri = "http://www.jornaldopovo.com.br/flip/edicoes/"+data+"/edicao_completa.pdf";
+                                 link = "http://docs.google.com/viewer?url=" +  encodeURIComponent(uri) + "&embedded=true";
+                                 window.open(link, "_blank", "location=no,toolbar=no,hardwareback=yes");
+                                 */
+
+                               }
+                             }
+                           },
+                         ]
+                       });
+
+                  }
+                  else {
+                      $ionicPopup.alert({
+                     title: 'Aviso',
+                     content: 'Seu E-MAIL ou SENHA estão errados ou foram digitados incorretamente, tente novamente'
+                   });
+                  }
+             }).
+             error(function(data, status, headers, config) {
+                $ionicPopup.alert({
+                     title: 'Aviso',
+                     content: 'Você esta sem conexão com a internet.'
+                   });
+             });
+            /*
+             var res = filename.split("-");
              var data = res[0]+res[1]+res[2];
              uri = "http://www.jornaldopovo.com.br/flip/edicoes/"+data+"/edicao_completa.pdf";
+             link = "http://docs.google.com/viewer?url=" +  encodeURIComponent(uri) + "&embedded=true";
+             window.open(link, "_blank", "location=no,toolbar=no,hardwareback=yes");
+             */
 
-  RadaeePDFPlugin.openFromAssets(
-  {
-    url: uri, //the pdf name
-    password: "" //password if needed
-  },
-  function(message) {
-     console.log("Success: " + message);
-  },
-  function(err){
-    console.log("Failure: " + err);
-    });
+           }
+         }
+       },
+     ]
+});
 
+}
+ 
 })
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats, $sce, $state) {
