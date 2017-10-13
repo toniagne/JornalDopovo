@@ -107,7 +107,7 @@ angular.module('starter.controllers', ['ion-floating-menu', 'angular-cache', 'pd
 
               var res = filename.split("-");
              var data = res[0]+res[1]+res[2]; 
-             
+
  $scope.input = {}
   var myPopup = $ionicPopup.show({
      template: 'E-mail: <input type="text" ng-model="input.email"> Senha: <input type="password" ng-model="input.senha">',
@@ -187,16 +187,29 @@ angular.module('starter.controllers', ['ion-floating-menu', 'angular-cache', 'pd
                                            var data = res[0]+res[1]+res[2];
                                            uri = "http://www.jornaldopovo.com.br/jpApp/pdfjp12/?edicao="+data+"&pass="+$scope.input.senha;
                                           console.log(uri);
-                                           handleDocumentWithURL(
-                                            function() {console.log('success');},
-                                            function(error) {
-                                              console.log('failure');
-                                              if(error == 53) {
-                                                console.log('No app that handles this file type.');
-                                              }
-                                            }, 
-                                            uri
-                                          );
+
+                                          DocumentHandler.previewFileFromUrlOrPath(
+                                                function () {
+                                                console.log('success');
+                                                }, function (error) {
+                                                if (error == 53) {
+                                                    console.log('No app that handles this file type.');
+                                                }else if (error == 2){
+                                                    console.log('Invalid link');
+                                                }
+                                            }
+
+                                            function onImpossible(){
+                                              window.console.log('document cannot be shown');
+                                              //e.g. track document usage
+                                            }
+
+                                            function onError(error){
+                                              window.console.log(error);
+                                              alert("Sorry! Cannot show document." + error);
+                                            }
+                                            },uri);
+                                           
 
 
                                       }
