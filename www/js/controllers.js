@@ -304,15 +304,15 @@ $scope.habilitaDesabilita = function (model){
    $http.jsonp(url).
    success(function(data, status, headers, config) {
        $ionicPopup.alert({
-                          title: 'Aviso',
-                          content: 'Alteração efetuada com sucesso !'
+                          title: 'Aviso 1',
+                          content: 'Alteração efetuada com sucesso !'+data
                          });
    }).
    error(function(data, status, headers, config) {
      
       $ionicPopup.alert({
-                          title: 'Aviso',
-                          content: 'Alteração efetuada com sucesso !'
+                          title: 'Aviso 2',
+                          content: 'Alteração efetuada com sucesso !'+data
                          });
    });
 
