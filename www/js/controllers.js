@@ -79,6 +79,9 @@ $scope.habilitaDesabilita = function (model){
      $scope.abreContato = function (){
         window.location.href = '#/tab/contato';
     }
+        $scope.configuracoes = function (){
+        window.location.href = '#/tab/configuracoes';
+    }
  $scope.mudatexto = function (){
       $scope.placeholder1 = "DIGITE A DATA | 01-01-2017";
   }
@@ -292,10 +295,27 @@ $scope.habilitaDesabilita = function (model){
  
 })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats, $sce, $state) {
+.controller('ChatDetailCtrl', function($scope, $stateParams, Chats, $sce, $state, $http, $ionicPopup) {
 
 $scope.habilitaDesabilita = function (model){
-      alert(localStorage.getItem('registrationId'));
+       
+
+  var url =  'http://www.jornaldopovo.com.br/jpApp/habilitadesabilita.php?callback=JSON_CALLBACK&idreg='+localStorage.getItem('registrationId');
+   $http.jsonp(url).
+   success(function(data, status, headers, config) {
+       $ionicPopup.alert({
+                          title: 'Aviso',
+                          content: 'Alteração efetuada com sucesso !'
+                         });
+   }).
+   error(function(data, status, headers, config) {
+     
+      $ionicPopup.alert({
+                          title: 'Aviso',
+                          content: 'Alteração efetuada com sucesso !'
+                         });
+   });
+
   }
  
   $scope.versaoImpressa = function (){
@@ -307,6 +327,9 @@ $scope.habilitaDesabilita = function (model){
   $scope.assinaturas = function (){
       window.location.href = '#/tab/account';
   }
+       $scope.abreContato = function (){
+        window.location.href = '#/tab/contato';
+    }
 
   $scope.pdf = {
         src: 'img/edicao_completa.pd',
@@ -350,6 +373,9 @@ $scope.habilitaDesabilita = function (model){
      $scope.abreContato = function (){
         window.location.href = '#/tab/contato';
     }
+        $scope.configuracoes = function (){
+        window.location.href = '#/tab/configuracoes';
+    }
 
   $scope.settings = {
     enableFriends: true
@@ -372,6 +398,9 @@ $scope.habilitaDesabilita = function (model){
     }
      $scope.abreContato = function (){
         window.location.href = '#/tab/contato';
+    }
+        $scope.configuracoes = function (){
+        window.location.href = '#/tab/configuracoes';
     }
 
     $scope.submit = function (dataForm, data){

@@ -3,8 +3,8 @@
 
   <ion-content scroll="true" overflow-scroll="true" class="iframe-wrapper">
     <iframe data-tap-disabled="true" ng-src="{{trustSrc(iframeURLassinatura)}}"></iframe>
-        <ion-floating-menu menu-color="#ED3237" menu-open-color="#ED3237">
-    <ion-floating-item button-color="#ED3237" icon="ion-android-settings" text="Configurações" ng-href="#/tab/configuracoes"></ion-floating-item>
+            <ion-floating-menu menu-color="#ED3237" menu-open-color="#ED3237">
+    <ion-floating-item button-color="#ED3237" icon="ion-android-settings" text="Configurações" click="configuracoes()" ng-href="#/tab/configuracoes"></ion-floating-item>
     <ion-floating-item button-color="#ED3237"  href="#/tab/chats" click="versaoImpressa()" icon="ion-camera" text="Versão Impressa"></ion-floating-item>
     <ion-floating-item button-color="#ED3237"  href="#/tab/contato" click="abreContato()" icon="ion-chatboxes" text="Fale Conosco"></ion-floating-item>
     <ion-floating-item button-color="#ED3237" click="assinaturas()" icon="ion-person" text="Assinaturas" ng-href="#/tab/assinar"></ion-floating-item> 
