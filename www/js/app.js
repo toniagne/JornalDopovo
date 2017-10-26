@@ -87,6 +87,15 @@ $ionicPlatform.registerBackButtonAction(function(event) {
         }
       }
     })
+    .state('tab.configuracoes', {
+      url: '/configuracoes',
+      views: {
+        'tab-chats': {
+          templateUrl: 'templates/tab-configuracoes.html',
+          controller: 'ChatDetailCtrl'
+        }
+      }
+    })
  .state('tab.recarrega', {
       url: '/recarrega',
       views: {

@@ -22,6 +22,9 @@ angular.module('starter.controllers', ['ion-floating-menu', 'angular-cache', 'pd
      $scope.abreContato = function (){
         window.location.href = '#/tab/contato';
     }
+    $scope.configuracoes = function (){
+        window.location.href = '#/tab/configuracoes';
+    }
 
     $scope.trustSrc = function(src) {
       $timeout(function () {
@@ -55,8 +58,10 @@ angular.module('starter.controllers', ['ion-floating-menu', 'angular-cache', 'pd
 
 .controller('ChatsCtrl', function($scope, Chats, $http, $state, $ionicPopup, Usuario, Cache) {
 
-
-
+  
+$scope.habilitaDesabilita = function (model){
+      console.log(model);
+  }
 
   $scope.placeholder1 = "EDIÇÕES ANTERIORES";
   $scope.versaoImpressa = function (){
@@ -289,6 +294,9 @@ angular.module('starter.controllers', ['ion-floating-menu', 'angular-cache', 'pd
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats, $sce, $state) {
 
+$scope.habilitaDesabilita = function (model){
+      alert(localStorage.getItem('registrationId'));
+  }
  
   $scope.versaoImpressa = function (){
       window.location.href = '#/tab/chats';
