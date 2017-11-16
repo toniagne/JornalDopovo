@@ -196,6 +196,76 @@ $scope.habilitaDesabilita = function (model){
                                           console.log(uri);
 
 
+                                          var options = {
+                                                      title: "edição",
+                                                      documentView : {
+                                                        closeLabel : "fechar"
+                                                      },
+                                                      navigationView : {
+                                                        closeLabel : "fechar"
+                                                      },
+                                                      email : {
+                                                        enabled : false
+                                                      },
+                                                      print : {
+                                                        enabled : false
+                                                      },
+                                                      openWith : {
+                                                        enabled : true
+                                                      },
+                                                      bookmarks : {
+                                                        enabled : false
+                                                      },
+                                                      search : {
+                                                        enabled : false
+                                                      },
+                                                      autoClose: {
+                                                        onPause : false
+                                                      }
+                                                    }
+function onShow(){
+  window.console.log('document shown');
+  //e.g. track document usage
+}
+
+function onClose(){
+  window.console.log('document closed');
+  //e.g. remove temp files
+}
+
+function onMissingApp(appId, installer)
+{
+    if(confirm("Do you want to install the free PDF Viewer App "
+            + appId + " for Android?"))
+    {
+        installer();
+    }
+} 
+
+function onError(error){
+  window.console.log(error);
+  alert("Sorry! Cannot view document.");
+}
+
+var linkHandlers = [
+            {
+                pattern: STRING, // string representation of a plain regexp (no flags)
+                close: true, // shall the document be closed, after the link handler was executed?
+                handler: function (link) {} // link handler to be executed when the user clicks on a link matching the pattern
+            },
+            {
+                pattern: '^\/',
+                close: false,
+                handler: function (link) {
+                    window.console.log('link clicked: ' + link);
+                }
+            }
+    ];
+
+       cordova.plugins.SitewaertsDocumentViewer.viewDocument(
+    uri, 'application/pdf', options, onShow, onClose, onMissingApp, onError, linkHandlers);     
+
+                                          /*
                                            DocumentHandler.previewFileFromUrlOrPath(
                                                 function () {
                                                 console.log('success');
@@ -207,6 +277,7 @@ $scope.habilitaDesabilita = function (model){
                                                 }
                                             },
                                             uri, 'pdf-sample');
+                                            */
 
                                           $state.go("tab.chat-detail");
 
