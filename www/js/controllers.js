@@ -249,7 +249,7 @@ function onError(error){
 
 var linkHandlers = [
             {
-                pattern: STRING, // string representation of a plain regexp (no flags)
+                pattern: 'teste', // string representation of a plain regexp (no flags)
                 close: true, // shall the document be closed, after the link handler was executed?
                 handler: function (link) {} // link handler to be executed when the user clicks on a link matching the pattern
             },
