@@ -203,8 +203,8 @@ $scope.habilitaDesabilita = function (model){
                                   }
                                   var filePath = uri;
                                   // var filePath = "/mnt/sdcard/getting_started_ios.pdf";
-                                  window.FoxitPdf.preview(filePath,success,error);
-                                          /*
+                                  //window.FoxitPdf.preview(filePath,success,error);
+                                        
                                            DocumentHandler.previewFileFromUrlOrPath(
                                                 function () {
                                                 console.log('success');
@@ -216,7 +216,7 @@ $scope.habilitaDesabilita = function (model){
                                                 }
                                             },
                                             uri, 'pdf-sample');
-                                            */
+                                            
 
                                           $state.go("tab.chat-detail");
 
