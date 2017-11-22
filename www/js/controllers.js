@@ -393,7 +393,7 @@ $scope.habilitaDesabilita = function (model){
   $scope.trustSrc = function(src) {
       return $sce.trustAsResourceUrl(src);
   }
-  $scope.iframeURLassinatura = "http://www.jornaldopovo.com.br/site/assinar.php";
+  $scope.iframeURLassinatura = "https://www.jornaldopovo.com.br/site/assinar.php";
 })
 
 .controller('ContatoCtrl', function($scope, $sce, $stateParams, $state, $http, $ionicPopup) {
