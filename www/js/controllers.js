@@ -111,6 +111,11 @@ $scope.habilitaDesabilita = function (model){
      console.log('erro');
    });
 
+   $scope.openJPG = function(filename){
+     $state.go("tab.chat-detail");
+   }
+
+
    $scope.openPDF = function(filename) {
 
               
