@@ -1,56 +1,81 @@
 <ion-view view-title="">
-   
-<ion-scroll zooming="true"
-		    direction="yx" 
+    <ion-floating-menu menu-color="#ED3237" menu-open-color="#ED3237">
+    <ion-floating-item button-color="#ED3237" icon="ion-android-settings" text="Configurações" click="configuracoes()" ng-href="#/tab/configuracoes"></ion-floating-item>
+    <ion-floating-item button-color="#ED3237"  href="#/tab/chats" click="versaoImpressa()" icon="ion-camera" text="Versão Impressa"></ion-floating-item>
+    <ion-floating-item button-color="#ED3237"  href="#/tab/contato" click="abreContato()" icon="ion-chatboxes" text="Fale Conosco"></ion-floating-item>
+    <ion-floating-item button-color="#ED3237" click="assinaturas()" icon="ion-person" text="Assinaturas" ng-href="#/tab/assinar"></ion-floating-item> 
+    <ion-floating-item button-color="#0977A3" click="carregaInicio()" icon-image-class="imageClass" icon-image-path="img/logo-jp.png" text="Jornal do Povo"></ion-floating-item>    
+  </ion-floating-menu>
+
+  <ion-content> 
+
+      <ion-scroll zooming="true"
+		    direction="xy" 
 		    delegate-handle="zoom-pane" 
 		    class="zoom-pane" 
-		    min-zoom="1.5" 
+		    min-zoom="1" 
             scrollbar-x="false" 
 	        scrollbar-y="false" 
 		    overflow-scroll="false">
 
-		<img ng-src="http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-000.jpg"> 
-		<img ng-src="http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-000.jpg"> 
-		<img ng-src="http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-000.jpg"> 
-		<img ng-src="http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-000.jpg"> 
-		<img ng-src="http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-000.jpg"> 
-		<img ng-src="http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-000.jpg"> 
-				<img ng-src="http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-000.jpg"> 
-		<img ng-src="http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-000.jpg"> 
-				<img ng-src="http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-000.jpg"> 
-		<img ng-src="http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-000.jpg"> 
-				<img ng-src="http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-000.jpg"> 
-		<img ng-src="http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-000.jpg"> 
-				<img ng-src="http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-000.jpg"> 
-		<img ng-src="http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-000.jpg"> 
-				<img ng-src="http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-000.jpg"> 
+	  <ion-slide-box>
+  <ion-slide>
+    <img ng-src="http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-001.jpg">
+  </ion-slide>
+  <ion-slide>
+   <img ng-src="http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-002.jpg">
 
+  </ion-slide>
+  <ion-slide>
+    <img ng-src="http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-003.jpg">
+  </ion-slide>
+    <ion-slide>
+    <img ng-src="http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-004.jpg">
+  </ion-slide>
+    <ion-slide>
+    <img ng-src="http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-005.jpg">
+  </ion-slide>
+    <ion-slide>
+    <img ng-src="http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-006.jpg">
+  </ion-slide>
+    <ion-slide>
+    <img ng-src="http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-007.jpg">
+  </ion-slide>
+    <ion-slide>
+    <img ng-src="http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-008.jpg">
+  </ion-slide>
+    <ion-slide>
+    <img ng-src="http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-009.jpg">
+  </ion-slide>
+    <ion-slide>
+    <img ng-src="http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-010.jpg">
+  </ion-slide>
+    <ion-slide>
+    <img ng-src="http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-011.jpg">
+  </ion-slide>
+    <ion-slide>
+    <img ng-src="http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-012.jpg">
+  </ion-slide>
+    <ion-slide>
+    <img ng-src="http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-013.jpg">
+  </ion-slide>
 
-<img ng-src="http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-001.jpg" > 
-<img ng-src="http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-002.jpg" > 
-<img ng-src="http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-003.jpg" > 
-<img ng-src="http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-004.jpg" > 
-<img ng-src="http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-005.jpg" > 
-<img ng-src="http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-006.jpg" > 
-<img ng-src="http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-007.jpg" > 
-<img ng-src="http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-008.jpg" > 
-<img ng-src="http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-009.jpg" > 
-<img ng-src="http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-010.jpg" > 
-<img ng-src="http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-011.jpg" > 
-<img ng-src="http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-012.jpg" > 
-<img ng-src="http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-013.jpg" > 
-<img ng-src="http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-014.jpg" > 
-<img ng-src="http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-015.jpg" > 
-<img ng-src="http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-016.jpg" > 
+    <ion-slide>
+    <img ng-src="http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-014.jpg">
+  </ion-slide>
+      <ion-slide>
+    <img ng-src="http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-015.jpg">
+  </ion-slide>
+      <ion-slide>
+    <img ng-src="http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-016.jpg">
+  </ion-slide>
+</ion-slide-box>
+
+ 
 
 	</ion-scroll>	
-
-
-
-
-
-    <!--    <img src="img/fundo-informe.jpg" width="100%"> -->
-
-</ion-content>
-
+ 
+  </ion-content>
 </ion-view>
+
+ 
