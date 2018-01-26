@@ -1,4 +1,4 @@
-angular.module('starter.controllers', ['ion-floating-menu', 'angular-cache', 'pdfJornal'])
+angular.module('starter.controllers', ['ion-floating-menu', 'angular-cache', 'pdfJornal', 'ionic-zoom-view'])
 
 .controller('DashCtrl', function($scope, $window, $sce, $timeout, $ionicLoading, $state, $stateParams) {
 
