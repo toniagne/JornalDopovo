@@ -56,7 +56,7 @@ angular.module('starter.controllers', ['ion-floating-menu', 'angular-cache', 'pd
 
 })
 
-.controller('ChatsCtrl', function($scope, Chats, $http, $state, $ionicPopup, Usuario, Cache, $ionicBackdrop, $ionicModal, $ionicSlideBoxDelegate, $ionicScrollDelegate) {
+.controller('ChatsCtrl', function($scope, Chats, $http, $state, $ionicPopup, Usuario, Cache, $ionicBackdrop, $ionicModal, $ionicSlideDelegate, $ionicSlideBoxDelegate, $ionicScrollDelegate) {
 
   
 $scope.habilitaDesabilita = function (model){
@@ -322,42 +322,7 @@ $scope.updateSlideStatus = function(slide) {
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats, $sce, $state, $http, $ionicPopup, $ionicBackdrop, $ionicModal, $ionicSlideBoxDelegate, $ionicScrollDelegate) {
 
 
-
-  $scope.options = {
-    direction: 'vertical',
-    slidesPerView: '1',
-    paginationClickable: true,
-    showNavButtons: false
-  };
-
-  $scope.data = {};
-
-  $scope.$watch('data.slider',function(slider){
-      console.log('My slider object is ', slider);
-
-
-
-      // Your custom logic here
-  });
- $scope.slideCerto = 1;
-  $scope.options = {
-    showNavButtons: false,
-
-    effect: 'slide',
-    initialSlide: 0, 
-    onInit: function(swiper){ $scope.swiper = swiper; }, 
-    onSlideChangeEnd: function(swiper){ 
-      //console.log('The active index is ' + ); 
-            $scope.slideCerto = swiper.activeIndex;
-        
-
-    }
-
-  };
-
-$scope.$on("$ionicSlides.slideChangeStart", function(event, data){
-  $scope.slideatual = data.slider.activeIndex;
-});
+ 
 
 $scope.allImages = [{
           src: 'http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-001.jpg'
@@ -371,6 +336,26 @@ $scope.allImages = [{
           src: 'http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-005.jpg'
         }, {
           src: 'http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-006.jpg'
+        }, {
+          src: 'http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-007.jpg'
+        }, {
+          src: 'http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-008.jpg'
+        }, {
+          src: 'http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-009.jpg'
+        }, {
+          src: 'http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-010.jpg'
+        }, {
+          src: 'http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-011.jpg'
+        }, {
+          src: 'http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-012.jpg'
+        }, {
+          src: 'http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-013.jpg'
+        }, {
+          src: 'http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-014.jpg'
+        }, {
+          src: 'http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-015.jpg'
+        }, {
+          src: 'http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-016.jpg'
         }];
        
         $scope.zoomMin = 1;
@@ -382,7 +367,7 @@ $scope.updateSlideStatus = function(slide) {
 
  var zoomFactor = $ionicScrollDelegate.$getByHandle('scrollHandle' + slide).getScrollPosition().zoom;
  
-  
+
    if (zoomFactor == $scope.zoomMin) {
     $ionicSlideBoxDelegate.enableSlide(true);
   } else {
