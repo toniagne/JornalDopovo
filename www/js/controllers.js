@@ -1,4 +1,4 @@
-angular.module('starter.controllers', ['ion-floating-menu', 'angular-cache', 'pdfJornal', 'ionic-zoom-view'])
+angular.module('starter.controllers', ['ion-floating-menu', 'angular-cache', 'pdfJornal'])
 
 .controller('DashCtrl', function($scope, $window, $sce, $timeout, $ionicLoading, $state, $stateParams) {
 
@@ -56,7 +56,7 @@ angular.module('starter.controllers', ['ion-floating-menu', 'angular-cache', 'pd
 
 })
 
-.controller('ChatsCtrl', function($scope, Chats, $http, $state, $ionicPopup, Usuario, Cache) {
+.controller('ChatsCtrl', function($scope, Chats, $http, $state, $ionicPopup, Usuario, Cache, $ionicBackdrop, $ionicModal, $ionicSlideBoxDelegate, $ionicScrollDelegate) {
 
   
 $scope.habilitaDesabilita = function (model){
@@ -112,9 +112,18 @@ $scope.habilitaDesabilita = function (model){
    });
 
    $scope.openJPG = function(filename){
-     $state.go("tab.chat-detail");
+    $state.go("tab.chat-detail");
+       
    }
 
+$scope.updateSlideStatus = function(slide) {
+  var zoomFactor = $ionicScrollDelegate.$getByHandle('scrollHandle' + slide).getScrollPosition().zoom;
+  if (zoomFactor == $scope.zoomMin) {
+    $ionicSlideBoxDelegate.enableSlide(true);
+  } else {
+    $ionicSlideBoxDelegate.enableSlide(false);
+  }
+};
 
    $scope.openPDF = function(filename) {
 
@@ -310,7 +319,34 @@ $scope.habilitaDesabilita = function (model){
  
 })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats, $sce, $state, $http, $ionicPopup) {
+.controller('ChatDetailCtrl', function($scope, $stateParams, Chats, $sce, $state, $http, $ionicPopup, $ionicBackdrop, $ionicModal, $ionicSlideBoxDelegate, $ionicScrollDelegate) {
+
+
+$scope.allImages = [{
+          src: 'http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-001.jpg'
+        }, {
+          src: 'http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-002.jpg'
+        }, {
+          src: 'http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-003.jpg'
+        }, {
+          src: 'http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-004.jpg'
+        }, {
+          src: 'http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-005.jpg'
+        }, {
+          src: 'http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-006.jpg'
+        }];
+       
+        $scope.zoomMin = 1;
+ 
+ 
+$scope.updateSlideStatus = function(slide) {
+  var zoomFactor = $ionicScrollDelegate.$getByHandle('scrollHandle' + slide).getScrollPosition().zoom;
+  if (zoomFactor == $scope.zoomMin) {
+    $ionicSlideBoxDelegate.enableSlide(true);
+  } else {
+    $ionicSlideBoxDelegate.enableSlide(false);
+  }
+};
 
 $scope.habilitaDesabilita = function (model){
        
