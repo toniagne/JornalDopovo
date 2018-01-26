@@ -334,15 +334,33 @@ $scope.updateSlideStatus = function(slide) {
 
   $scope.$watch('data.slider',function(slider){
       console.log('My slider object is ', slider);
+
+
+
       // Your custom logic here
   });
- 
+ $scope.slideCerto = 1;
   $scope.options = {
     direction: 'vertical',
     slidesPerView: '1',
     paginationClickable: true,
-    showNavButtons: false
+    showNavButtons: false,
+
+    effect: 'slide',
+    initialSlide: 0, 
+    onInit: function(swiper){ $scope.swiper = swiper; }, 
+    onSlideChangeEnd: function(swiper){ 
+      //console.log('The active index is ' + ); 
+            $scope.slideCerto = swiper.activeIndex;
+        
+
+    }
+
   };
+
+$scope.$on("$ionicSlides.slideChangeStart", function(event, data){
+  $scope.slideatual = data.slider.activeIndex;
+});
 
 $scope.allImages = [{
           src: 'http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-001.jpg'
@@ -362,7 +380,10 @@ $scope.allImages = [{
  
  
 $scope.updateSlideStatus = function(slide) {
-  var zoomFactor = $ionicScrollDelegate.$getByHandle('scrollHandle' + slide).getScrollPosition().zoom;
+
+ 
+
+ var zoomFactor = $ionicScrollDelegate.$getByHandle('scrollHandle' + slide).getScrollPosition().zoom;
   if (zoomFactor == $scope.zoomMin) {
     $ionicSlideBoxDelegate.enableSlide(true);
   } else {
