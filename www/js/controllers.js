@@ -56,7 +56,7 @@ angular.module('starter.controllers', ['ion-floating-menu', 'angular-cache', 'pd
 
 })
 
-.controller('ChatsCtrl', function($scope, Chats, $http, $state, $ionicPopup, Usuario, Cache, $ionicBackdrop, $ionicModal, $ionicSlideDelegate, $ionicSlideBoxDelegate, $ionicScrollDelegate) {
+.controller('ChatsCtrl', function($scope, Chats, $http, $state, $ionicPopup, Usuario, Cache, $ionicBackdrop, $ionicModal,  $ionicSlideBoxDelegate, $ionicScrollDelegate) {
 
   
 $scope.habilitaDesabilita = function (model){
