@@ -322,6 +322,28 @@ $scope.updateSlideStatus = function(slide) {
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats, $sce, $state, $http, $ionicPopup, $ionicBackdrop, $ionicModal, $ionicSlideBoxDelegate, $ionicScrollDelegate) {
 
 
+
+  $scope.options = {
+    direction: 'vertical',
+    slidesPerView: '1',
+    paginationClickable: true,
+    showNavButtons: false
+  };
+
+  $scope.data = {};
+
+  $scope.$watch('data.slider',function(slider){
+      console.log('My slider object is ', slider);
+      // Your custom logic here
+  });
+ 
+  $scope.options = {
+    direction: 'vertical',
+    slidesPerView: '1',
+    paginationClickable: true,
+    showNavButtons: false
+  };
+
 $scope.allImages = [{
           src: 'http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-001.jpg'
         }, {
