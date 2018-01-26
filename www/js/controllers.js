@@ -341,9 +341,6 @@ $scope.updateSlideStatus = function(slide) {
   });
  $scope.slideCerto = 1;
   $scope.options = {
-    direction: 'vertical',
-    slidesPerView: '1',
-    paginationClickable: true,
     showNavButtons: false,
 
     effect: 'slide',
@@ -384,7 +381,9 @@ $scope.updateSlideStatus = function(slide) {
  
 
  var zoomFactor = $ionicScrollDelegate.$getByHandle('scrollHandle' + slide).getScrollPosition().zoom;
-  if (zoomFactor == $scope.zoomMin) {
+ 
+  
+   if (zoomFactor == $scope.zoomMin) {
     $ionicSlideBoxDelegate.enableSlide(true);
   } else {
     $ionicSlideBoxDelegate.enableSlide(false);
