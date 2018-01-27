@@ -1,3 +1,11 @@
+<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js'></script>
+<script type='text/javascript' src='loadImg.js'></script>
+<script type='text/javascript'>
+    $(function(){
+        $('img').imgPreload()
+    })
+</script>
+
 <ion-view view-title="">
         <ion-floating-menu menu-color="#ED3237" menu-open-color="#ED3237">
     <ion-floating-item button-color="#ED3237" icon="ion-android-settings" text="Configurações" click="configuracoes()" ng-href="#/tab/configuracoes"></ion-floating-item>
@@ -31,7 +39,7 @@
 <div class="list card">
       <div class="item item-image" ng-repeat="itens in edicoes">
         <br>
-        <a ng-click="openJPG(itens.data)">
+        <a ng-click="openPDF(itens.data)">
           <img  src="https://www.jornaldopovo.com.br/site/upload/capa/{{itens.edicao}}.jpg" width="100%" >
         </a>
         <Br>

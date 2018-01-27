@@ -79,7 +79,7 @@ $ionicPlatform.registerBackButtonAction(function(event) {
       }
     })
     .state('tab.chat-detail', {
-      url: '/chats/:chatId',
+      url: '/chats/:chatId/:edicao',
       views: {
         'tab-chats': {
           templateUrl: 'templates/chat-detail.html',

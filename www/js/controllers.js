@@ -204,8 +204,11 @@ $scope.updateSlideStatus = function(slide) {
                                         Usuario.list(data.nomeUsuario);
                                         Usuario.add(data.nomeUsuario);
                                         Cache.logIn($scope.input.senha);
+
+
                                           var res = filename.split("-");
                                            var data = res[0]+res[1]+res[2];
+                                           var npaginas = res[3];
                                            uri = "http://www.jornaldopovo.com.br/jpApp/pdfjp12/?edicao="+data+"&pass="+$scope.input.senha;
                                           console.log(uri);
 
@@ -219,6 +222,7 @@ $scope.updateSlideStatus = function(slide) {
                                   // var filePath = "/mnt/sdcard/getting_started_ios.pdf";
                                   //window.FoxitPdf.preview(filePath,success,error);
                                         
+                                        /*
                                            DocumentHandler.previewFileFromUrlOrPath(
                                                 function () {
                                                 console.log('success');
@@ -230,9 +234,14 @@ $scope.updateSlideStatus = function(slide) {
                                                 }
                                             },
                                             uri, 'pdf-sample');
-                                            
+                                        */    
 
-                                          $state.go("tab.chat-detail");
+
+
+                                          $state.go("tab.chat-detail", {
+                                              edicao: data,
+                                              chatId: npaginas
+                                          });
 
                                       }
                                       else {
@@ -296,10 +305,11 @@ $scope.updateSlideStatus = function(slide) {
 } else {
     var res = filename.split("-");
                                            var data = res[0]+res[1]+res[2];
+                                           var npaginas = res[3];
                                            uri = "http://www.jornaldopovo.com.br/jpApp/pdfjp12/?edicao="+data+"&pass="+window.localStorage.getItem("user");
-                                          console.log(uri);
+                                         
 
-
+                                           /*
                                            DocumentHandler.previewFileFromUrlOrPath(
                                                 function () {
                                                 console.log('success');
@@ -313,6 +323,11 @@ $scope.updateSlideStatus = function(slide) {
                                             uri, 'pdf-sample');
 
                                           $state.go("tab.chat-detail");
+                                          */
+                                          $state.go("tab.chat-detail", {
+                                              edicao: data,
+                                              chatId: npaginas
+                                          });
 }
 
 }
@@ -321,42 +336,24 @@ $scope.updateSlideStatus = function(slide) {
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats, $sce, $state, $http, $ionicPopup, $ionicBackdrop, $ionicModal, $ionicSlideBoxDelegate, $ionicScrollDelegate) {
 
-
  
 
-$scope.allImages = [{
-          src: 'http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-001.jpg'
-        }, {
-          src: 'http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-002.jpg'
-        }, {
-          src: 'http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-003.jpg'
-        }, {
-          src: 'http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-004.jpg'
-        }, {
-          src: 'http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-005.jpg'
-        }, {
-          src: 'http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-006.jpg'
-        }, {
-          src: 'http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-007.jpg'
-        }, {
-          src: 'http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-008.jpg'
-        }, {
-          src: 'http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-009.jpg'
-        }, {
-          src: 'http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-010.jpg'
-        }, {
-          src: 'http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-011.jpg'
-        }, {
-          src: 'http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-012.jpg'
-        }, {
-          src: 'http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-013.jpg'
-        }, {
-          src: 'http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-014.jpg'
-        }, {
-          src: 'http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-015.jpg'
-        }, {
-          src: 'http://www.garagee.com.br/jornaldopovo/edicoes/20180125/jpg/edicao_completa-page-016.jpg'
-        }];
+var obj = [];
+
+for (i = 1; i < $stateParams.chatId; i++) { 
+  var numeros = ('00' + i).slice(-3);
+
+  obj.push({ 
+            src: 'http://www.jornaldopovo.com.br/flip/edicoes/'+$stateParams.edicao+'/jpg/edicao-'+$stateParams.edicao+'-page-'+numeros+'.jpg' 
+        });
+
+
+   
+      }
+
+ 
+$scope.allImages = obj;
+ 
        
         $scope.zoomMin = 1;
  
