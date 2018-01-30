@@ -355,7 +355,7 @@ for (i = 1; i < $stateParams.chatId; i++) {
 $scope.allImages = obj;
  
        
-        $scope.zoomMin = 1.5;
+        $scope.zoomMin = 1;
  
  
 $scope.updateSlideStatus = function(slide) {
